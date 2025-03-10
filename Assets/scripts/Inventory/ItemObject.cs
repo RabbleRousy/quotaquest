@@ -6,7 +6,9 @@ public class ItemObject : ScriptableObject
 {
     public Sprite itemIcon;
     public int value;
-    
+    public string itemName;
+    public int itemValue;
+
 	private const int MAX_VALUE = 2;
 
 	//[Header( "Actual saved payload. Use GetCell(x,y) to read!")]
@@ -22,6 +24,7 @@ public class ItemObject : ScriptableObject
 		return data.Substring( n, 1);
 	}
 
+
 	int GetIndex( int x, int y)
 	{
 		if (x < 0) return -1;
@@ -31,7 +34,17 @@ public class ItemObject : ScriptableObject
 		return x + y * SIZE;
 	}
 
-	void ToggleCell( int x, int y)
+
+
+
+
+    public void Initialize(string name, int value)
+    {
+        itemName = name;
+        itemValue = value;
+    }
+
+void ToggleCell( int x, int y)
 	{
 		int n = GetIndex( x, y);
 		if (n >= 0)
