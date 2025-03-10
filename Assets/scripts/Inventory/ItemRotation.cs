@@ -1,16 +1,11 @@
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class ItemObject : ScriptableObject
+public class ItemRotation : MonoBehaviour
 {
-    public Sprite itemIcon;
-    public int value;
-    
-	private const int MAX_VALUE = 2;
-
 	//[Header( "Actual saved payload. Use GetCell(x,y) to read!")]
 	//[Header( "WARNING: changing this will nuke your data!")]
+	[SerializeField, HideInInspector]
 	private string data = "0000000000000000000000000";
 
 	private const int SIZE = 5;
@@ -56,12 +51,12 @@ public class ItemObject : ScriptableObject
 	}
 
 #if UNITY_EDITOR
-	[CustomEditor(typeof(ItemObject))]
+	[CustomEditor(typeof(ItemRotation))]
 	public class CheesyGridEditor : Editor
 	{
 		public override void OnInspectorGUI()
 		{
-			var grid = (ItemObject)target;
+			var grid = (ItemRotation)target;
 
 			EditorGUILayout.BeginVertical();
 
@@ -87,7 +82,7 @@ public class ItemObject : ScriptableObject
 				}
 				GUILayout.EndHorizontal();
 			}
-
+			GUI.color = Color.white;
 			if (GUILayout.Button("Clear"))
 			{
 #if UNITY_EDITOR
