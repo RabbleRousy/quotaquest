@@ -1,12 +1,13 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ItemRotation : MonoBehaviour
 {
 	//[Header( "Actual saved payload. Use GetCell(x,y) to read!")]
 	//[Header( "WARNING: changing this will nuke your data!")]
 	[SerializeField, HideInInspector]
-	private string data = "0000000000000000000000000";
+	private string format = "0000000000000000000000000";
 
 	private const int SIZE = 5;
 
@@ -14,7 +15,7 @@ public class ItemRotation : MonoBehaviour
 	public string GetCell( int x, int y)
 	{
 		int n = GetIndex( x, y);
-		return data.Substring( n, 1);
+		return format.Substring( n, 1);
 	}
 
 	int GetIndex( int x, int y)
@@ -31,7 +32,7 @@ public class ItemRotation : MonoBehaviour
 		int n = GetIndex( x, y);
 		if (n >= 0)
 		{
-			var cell = data.Substring( n, 1);
+			var cell = format.Substring( n, 1);
 
 			int c = 0;
 			int.TryParse( cell, out c);
@@ -43,7 +44,7 @@ public class ItemRotation : MonoBehaviour
 			Undo.RecordObject( this, "Toggle Cell");
 #endif
 			// reassemble
-			data = data.Substring( 0, n) + cell + data.Substring( n + 1);
+			format = format.Substring( 0, n) + cell + format.Substring( n + 1);
 #if UNITY_EDITOR
 			EditorUtility.SetDirty( this);
 #endif
@@ -69,7 +70,7 @@ public class ItemRotation : MonoBehaviour
 				{
 					int n = grid.GetIndex( x, y);
 
-					var cell = grid.data.Substring( n, 1);
+					var cell = grid.format.Substring( n, 1);
 
 					// hard-coded some cheesy color map - improve it by all means!
 					GUI.color = Color.gray;
@@ -88,7 +89,7 @@ public class ItemRotation : MonoBehaviour
 #if UNITY_EDITOR
 				Undo.RecordObject( this, "Clear Format");
 #endif
-				grid.data = "0000000000000000000000000";
+				grid.format = "0000000000000000000000000";
 #if UNITY_EDITOR
 				EditorUtility.SetDirty(grid);
 #endif

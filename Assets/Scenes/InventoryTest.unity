@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &450955985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450955987}
+  - component: {fileID: 450955986}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &450955986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450955985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590208ef62a2c6c47a58c8bafe3b5f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layout: {fileID: 11400000, guid: 8a2fd57ed360c444eaf03d7b753a8ef7, type: 2}
+--- !u!4 &450955987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450955985}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.534624, y: -0.16602771, z: 0.07649714}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534390678
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2872e56ec0bf1424dbf2c54b0aadd7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: 1100001000000000000000000
+  format: 0000000000000000000000000
 --- !u!212 &614600377
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -452,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2872e56ec0bf1424dbf2c54b0aadd7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: 1000011000000000000000000
+  format: 0000000000000000000000000
 --- !u!212 &1562525508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -553,7 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2872e56ec0bf1424dbf2c54b0aadd7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: 1100010000000000000000000
+  format: 0000000000000000000000000
 --- !u!212 &1787460390
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -654,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2872e56ec0bf1424dbf2c54b0aadd7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: 0100011000000000000000000
+  format: 0000000000000000000000000
 --- !u!212 &1925006099
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -716,3 +761,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1311611302}
   - {fileID: 534390680}
+  - {fileID: 450955987}
