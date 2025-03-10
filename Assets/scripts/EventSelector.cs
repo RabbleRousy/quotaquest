@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class EventSelector : MonoBehaviour
 {
-    public Dropdown eventDropdown;
+    public TMPro.TMP_Dropdown eventDropdown;
     public Button confirmButton;
 
     void Start()
