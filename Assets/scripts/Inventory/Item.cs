@@ -41,10 +41,13 @@ public class ItemEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        if (GUILayout.Button("Rotate"))
+        if (Application.isPlaying)
         {
-            Item item = (Item)target;
-            item.Rotate();
+            if (GUILayout.Button("Rotate"))
+            {
+                Item item = (Item)target;
+                item.Rotate();
+            }
         }
         base.OnInspectorGUI();
     }

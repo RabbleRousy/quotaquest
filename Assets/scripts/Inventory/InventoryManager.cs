@@ -9,6 +9,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private InventoryLayout layout;
     private int width, height;
     private string storage;
+    
+    [SerializeField] private ItemRotation testItem;
 
     void SetDimensions()
     {
@@ -31,6 +33,12 @@ public class InventoryManager : MonoBehaviour
         if (x >= width) return -1;
         if (y >= height) return -1;
         return x + y * width;
+    }
+    
+    public string GetCell( int x, int y)
+    {
+        int n = GetIndex( x, y);
+        return storage.Substring( n, 1);
     }
     
     void ToggleCell( int x, int y)
@@ -57,9 +65,36 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem()
+    bool IsCellAvailable(int x, int y)
     {
-        
+        bool isInLayout = layout.GetCell(x, y) == "1";
+        bool isOccupied = GetCell(x, y) == "1";
+        return isInLayout && !isOccupied;
+    }
+
+    public bool TryInsertItem(ItemRotation item, int x, int y)
+    {
+        Debug.Log("Old storage: " + storage);
+        char[] newStorage = storage.ToCharArray();
+        // Loop over all fields the item can cover
+        for (int i = 0; i < ItemRotation.SIZE; i++)
+        {
+            for (int j = 0; j < ItemRotation.SIZE; j++)
+            {
+                if (item.GetCell(i, j) == "0")
+                    continue;
+                
+                // Item body covers this cell
+                if (!IsCellAvailable(x + i, y + j)) return false;
+                newStorage[GetIndex(x + i, y + j)] = '1';
+            }
+        }
+        storage = new string(newStorage);
+        Debug.Log("Inserting successful. New storage: " + storage);
+        #if UNITY_EDITOR
+        EditorUtility.SetDirty(this);
+        #endif
+        return true;
     }
 
     public void RemoveItem()
@@ -98,7 +133,8 @@ public class InventoryManager : MonoBehaviour
 
                     if (GUILayout.Button( "",  GUILayout.Width(20)))
                     {
-                        grid.ToggleCell(x, y);
+                        //grid.ToggleCell(x, y);
+                        grid.TryInsertItem(grid.testItem, x, y);
                     }
                 }
                 GUILayout.EndHorizontal();

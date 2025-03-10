@@ -9,7 +9,7 @@ public class ItemRotation : MonoBehaviour
 	[SerializeField, HideInInspector]
 	private string format = "0000000000000000000000000";
 
-	private const int SIZE = 5;
+	public const int SIZE = 5;
 
 	// for you to get stuff out of the grid to use in your game
 	public string GetCell( int x, int y)
