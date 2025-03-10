@@ -5,13 +5,24 @@ public class EventSelector : MonoBehaviour
 {
     public TMPro.TMP_Dropdown eventDropdown;
     public Button confirmButton;
+    public Button eventButton1;
+    public Button eventButton2;
+    public Button eventButton3;
 
     void Start()
     {
-        confirmButton.onClick.AddListener(OnConfirm);
+        eventButton1.onClick.AddListener(() => SelectEvent("Bergpass"));
+        eventButton2.onClick.AddListener(() => SelectEvent("Höhle"));
+        eventButton3.onClick.AddListener(() => SelectEvent("Waldweg"));
     }
 
-    void OnConfirm()
+    void SelectEvent(string eventName)
+    {
+        Debug.Log("Selected Event: " + eventName);
+        
+    }
+
+void OnConfirm()
     {
         int selectedIndex = eventDropdown.value;
         string selectedEvent = eventDropdown.options[selectedIndex].text;
