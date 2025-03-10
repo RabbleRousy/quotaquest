@@ -1,18 +1,11 @@
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class ItemObject : ScriptableObject
+public class ItemRotation : MonoBehaviour
 {
-    public Sprite itemIcon;
-    public int value;
-    public string itemName;
-    public int itemValue;
-
-	private const int MAX_VALUE = 2;
-
 	//[Header( "Actual saved payload. Use GetCell(x,y) to read!")]
 	//[Header( "WARNING: changing this will nuke your data!")]
+	[SerializeField, HideInInspector]
 	private string data = "0000000000000000000000000";
 
 	private const int SIZE = 5;
@@ -24,7 +17,6 @@ public class ItemObject : ScriptableObject
 		return data.Substring( n, 1);
 	}
 
-
 	int GetIndex( int x, int y)
 	{
 		if (x < 0) return -1;
@@ -34,17 +26,7 @@ public class ItemObject : ScriptableObject
 		return x + y * SIZE;
 	}
 
-
-
-
-
-    public void Initialize(string name, int value)
-    {
-        itemName = name;
-        itemValue = value;
-    }
-
-void ToggleCell( int x, int y)
+	void ToggleCell( int x, int y)
 	{
 		int n = GetIndex( x, y);
 		if (n >= 0)
@@ -69,12 +51,12 @@ void ToggleCell( int x, int y)
 	}
 
 #if UNITY_EDITOR
-	[CustomEditor(typeof(ItemObject))]
+	[CustomEditor(typeof(ItemRotation))]
 	public class CheesyGridEditor : Editor
 	{
 		public override void OnInspectorGUI()
 		{
-			var grid = (ItemObject)target;
+			var grid = (ItemRotation)target;
 
 			EditorGUILayout.BeginVertical();
 
@@ -100,7 +82,7 @@ void ToggleCell( int x, int y)
 				}
 				GUILayout.EndHorizontal();
 			}
-
+			GUI.color = Color.white;
 			if (GUILayout.Button("Clear"))
 			{
 #if UNITY_EDITOR
