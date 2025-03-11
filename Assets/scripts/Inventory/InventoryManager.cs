@@ -14,6 +14,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private ItemRotation testItem;
     [SerializeField] private RectTransform cellPrefab;
 
+    public Vector2 UICellSize => GetComponent<GridLayoutGroup>().cellSize;
+
     void SetDimensions()
     {
         layout.GetMaxDimensions(out width, out height);

@@ -1,6 +1,8 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 public class ItemRotation : MonoBehaviour
 {
@@ -26,6 +28,44 @@ public class ItemRotation : MonoBehaviour
 		if (y >= SIZE) return -1;
 		return x + y * SIZE;
 	}
+	
+	public void GetMaxDimensions(out int width, out int height)
+	{
+		// Find width
+		int minY = Int32.MaxValue, maxY = Int32.MinValue;
+		// Find first and last y in each column
+		for (int x = 0; x < SIZE; x++)
+		{
+			int thisColMinY = -1, thisColMaxY = -1;
+			for (int y = 0; y < SIZE; y++)
+			{
+				if (GetCell(x, y) == "0") continue;
+                
+				if (thisColMinY == -1) thisColMinY = y;
+				else thisColMaxY = y;
+			}
+			if (thisColMinY < minY) minY = thisColMinY;
+			if (thisColMaxY > maxY) maxY = thisColMaxY;
+		}
+		width = maxY - minY;
+		// Find height
+		int minX = Int32.MaxValue, maxX = Int32.MinValue;
+		// Find first and last x in each row
+		for (int y = 0; y < SIZE; y++)
+		{
+			int thisRowMinX = -1, thisRowMaxX = -1;
+			for (int x = 0; x < SIZE; x++)
+			{
+				if (GetCell(x, y) == "0") continue;
+                
+				if (thisRowMinX == -1) thisRowMinX = x;
+				else thisRowMaxX = x;
+			}
+			if (thisRowMinX < minX) minX = thisRowMinX;
+			if (thisRowMaxX > maxX) maxX = thisRowMaxX;
+		}
+		height = maxX - minX;
+	}
 
 	void ToggleCell( int x, int y)
 	{
@@ -49,6 +89,21 @@ public class ItemRotation : MonoBehaviour
 			EditorUtility.SetDirty( this);
 #endif
 		}
+	}
+
+	private void Start()
+	{
+		SetScale();
+	}
+
+	void SetScale()
+	{
+		Vector2 cellSize = FindFirstObjectByType<InventoryManager>().UICellSize;
+		int width, height;
+		GetMaxDimensions(out width, out height);
+		RectTransform rectTransform = GetComponent<RectTransform>();
+		Vector2 padding = 0.1f * cellSize;
+		rectTransform.sizeDelta = new Vector2(width * cellSize.x - padding.x, height * cellSize.y - padding.y);
 	}
 
 #if UNITY_EDITOR
