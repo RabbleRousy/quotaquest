@@ -11,40 +11,23 @@ public class InventoryLayout : ScriptableObject
 
     public void GetMaxDimensions(out int width, out int height)
     {
-        // Find height
-        int minY = Int32.MaxValue, maxY = Int32.MinValue;
-        // Find first and last y in each column
+        int xMin = int.MaxValue, xMax = int.MinValue;
+        int yMin = int.MaxValue, yMax = int.MinValue;
+
         for (int x = 0; x < SIZE; x++)
         {
-            int thisColMinY = -1, thisColMaxY = -1;
             for (int y = 0; y < SIZE; y++)
             {
                 if (GetCell(x, y) == "0") continue;
-                
-                if (thisColMinY == -1) thisColMinY = y;
-                else thisColMaxY = y;
+				
+                if (y > yMax) yMax = y;
+                if (x > xMax) xMax = x;
+                if (x < xMin) xMin = x;
+                if (y < yMin) yMin = y;
             }
-            if (thisColMinY < minY) minY = thisColMinY;
-            if (thisColMaxY > maxY) maxY = thisColMaxY;
         }
-        height = maxY - minY;
-        // Find width
-        int minX = Int32.MaxValue, maxX = Int32.MinValue;
-        // Find first and last x in each row
-        for (int y = 0; y < SIZE; y++)
-        {
-            int thisRowMinX = -1, thisRowMaxX = -1;
-            for (int x = 0; x < SIZE; x++)
-            {
-                if (GetCell(x, y) == "0") continue;
-                
-                if (thisRowMinX == -1) thisRowMinX = x;
-                else thisRowMaxX = x;
-            }
-            if (thisRowMinX < minX) minX = thisRowMinX;
-            if (thisRowMaxX > maxX) maxX = thisRowMaxX;
-        }
-        width = maxX - minX;
+        width = xMax - xMin + 1;
+        height = yMax - yMin + 1;
     }
     
     public string GetCell(int x, int y)
