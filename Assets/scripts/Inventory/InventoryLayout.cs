@@ -65,7 +65,6 @@ public class InventoryLayout : ScriptableObject
     void ToggleCell(int x, int y)
     {
         int n = GetIndex( x, y);
-        Debug.Log("Toggling cell " + x + "/" + y + "(n = " + n + ")");
         if (n >= 0)
         {
             var cell = storage.Substring( n, 1);
