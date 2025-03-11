@@ -37,15 +37,15 @@ public class SellItem : MonoBehaviour
         int itemQuote = Random.Range(25, 100); // Beispiel für unterschiedliche Quotes pro Item
         Debug.Log("Item verkauft: " + item.name + " für " + itemQuote + " Münzen");
         currentQuoteProgress += itemQuote;
-        gameStateManager.UpdateMoney(itemQuote);
-        UpdateMoneyText(); // Aktualisiere die Anzeige des aktuellen Geldes
 
         // Überprüfe, ob die Quote erfüllt ist
         if (currentQuoteProgress >= gameStateManager.gameState.nextQuote)
         {
+            gameStateManager.UpdateMoney(gameStateManager.gameState.nextQuote); 
             currentQuoteProgress = 0; // Setze den Fortschritt zurück
             currentQuote += 250; // Erhöhe die Quote (Beispiel: Erhöhung um 250)
-            UpdateQuote(); // Aktualisiere die Quote nach dem Erfüllen
+            UpdateQuote(); 
+            UpdateMoneyText(); 
         }
         else
         {
