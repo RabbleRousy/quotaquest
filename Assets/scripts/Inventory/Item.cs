@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
 
     [SerializeField] private ItemRotation[] rotations;
     private int currentRotation;
+    public ItemRotation CurrentRotation => rotations[currentRotation];
 
     private void Awake()
     {

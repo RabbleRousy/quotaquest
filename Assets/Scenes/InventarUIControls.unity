@@ -228,6 +228,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6215744448117259492, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
   m_PrefabInstance: {fileID: 1547729195}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &791067358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+  m_PrefabInstance: {fileID: 1547729195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd2e48acadf2490a8cc842a3c8e823e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &829611749 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8668127638587951012, guid: ea822a1d793db416f9f9ec47444dd631, type: 3}
@@ -241,6 +252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 767624946}
     m_Modifications:
+    - target: {fileID: 5353882058144307480, guid: ea822a1d793db416f9f9ec47444dd631, type: 3}
+      propertyPath: testItem
+      value: 
+      objectReference: {fileID: 791067358}
     - target: {fileID: 6231337240861378528, guid: ea822a1d793db416f9f9ec47444dd631, type: 3}
       propertyPath: m_Name
       value: Inventory

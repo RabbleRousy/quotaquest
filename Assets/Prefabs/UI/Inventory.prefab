@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -114,5 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layout: {fileID: 11400000, guid: 8a2fd57ed360c444eaf03d7b753a8ef7, type: 2}
+  storage: 
   testItem: {fileID: 0}
-  cellPrefab: {fileID: 3405876205592319399, guid: f013d44ee17494fa6a989bc1dbcf17dd, type: 3}
+  cellPrefab: {fileID: -7043987052308130261, guid: f013d44ee17494fa6a989bc1dbcf17dd, type: 3}

@@ -6,12 +6,12 @@ using UnityEngine;
 public class InventoryLayout : ScriptableObject
 {
     private const int SIZE = 50;
-    [SerializeField, HideInInspector]
-    private string storage = new string('0', SIZE * SIZE);
+    [SerializeField]
+    public string storage = new string('0', SIZE * SIZE);
 
     public void GetMaxDimensions(out int width, out int height)
     {
-        // Find width
+        // Find height
         int minY = Int32.MaxValue, maxY = Int32.MinValue;
         // Find first and last y in each column
         for (int x = 0; x < SIZE; x++)
@@ -27,8 +27,8 @@ public class InventoryLayout : ScriptableObject
             if (thisColMinY < minY) minY = thisColMinY;
             if (thisColMaxY > maxY) maxY = thisColMaxY;
         }
-        width = maxY - minY;
-        // Find height
+        height = maxY - minY;
+        // Find width
         int minX = Int32.MaxValue, maxX = Int32.MinValue;
         // Find first and last x in each row
         for (int y = 0; y < SIZE; y++)
@@ -44,16 +44,16 @@ public class InventoryLayout : ScriptableObject
             if (thisRowMinX < minX) minX = thisRowMinX;
             if (thisRowMaxX > maxX) maxX = thisRowMaxX;
         }
-        height = maxX - minX;
+        width = maxX - minX;
     }
     
-    public string GetCell( int x, int y)
+    public string GetCell(int x, int y)
     {
-        int n = GetIndex( x, y);
+        int n = GetIndex(x, y);
         return storage.Substring( n, 1);
     }
     
-    int GetIndex( int x, int y)
+    int GetIndex(int x, int y)
     {
         if (x < 0) return -1;
         if (y < 0) return -1;
@@ -62,9 +62,10 @@ public class InventoryLayout : ScriptableObject
         return x + y * SIZE;
     }
     
-    void ToggleCell( int x, int y)
+    void ToggleCell(int x, int y)
     {
         int n = GetIndex( x, y);
+        Debug.Log("Toggling cell " + x + "/" + y + "(n = " + n + ")");
         if (n >= 0)
         {
             var cell = storage.Substring( n, 1);
@@ -98,10 +99,10 @@ public class InventoryLayout : ScriptableObject
 
             GUILayout.Label( "Inventory Layout");
 
-            for (int x = 0; x < SIZE; x++)
+            for (int y = 0; y < SIZE; y++)
             {
                 GUILayout.BeginHorizontal();
-                for (int y = 0; y < SIZE; y++)
+                for (int x = 0; x < SIZE; x++)
                 {
                     int n = grid.GetIndex( x, y);
 

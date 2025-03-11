@@ -8,7 +8,7 @@ public class ItemRotation : MonoBehaviour
 {
 	//[Header( "Actual saved payload. Use GetCell(x,y) to read!")]
 	//[Header( "WARNING: changing this will nuke your data!")]
-	[SerializeField, HideInInspector]
+	[SerializeField]
 	private string format = "0000000000000000000000000";
 
 	public const int SIZE = 5;
@@ -31,7 +31,7 @@ public class ItemRotation : MonoBehaviour
 	
 	public void GetMaxDimensions(out int width, out int height)
 	{
-		// Find width
+		// Find height
 		int minY = Int32.MaxValue, maxY = Int32.MinValue;
 		// Find first and last y in each column
 		for (int x = 0; x < SIZE; x++)
@@ -47,8 +47,8 @@ public class ItemRotation : MonoBehaviour
 			if (thisColMinY < minY) minY = thisColMinY;
 			if (thisColMaxY > maxY) maxY = thisColMaxY;
 		}
-		width = maxY - minY;
-		// Find height
+		height = maxY - minY;
+		// Find width
 		int minX = Int32.MaxValue, maxX = Int32.MinValue;
 		// Find first and last x in each row
 		for (int y = 0; y < SIZE; y++)
@@ -64,7 +64,7 @@ public class ItemRotation : MonoBehaviour
 			if (thisRowMinX < minX) minX = thisRowMinX;
 			if (thisRowMaxX > maxX) maxX = thisRowMaxX;
 		}
-		height = maxX - minX;
+		width = maxX - minX;
 	}
 
 	void ToggleCell( int x, int y)

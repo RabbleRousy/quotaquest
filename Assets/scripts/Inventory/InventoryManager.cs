@@ -9,10 +9,10 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private InventoryLayout layout;
     private int width, height;
-    private string storage;
+    [SerializeField] private string storage;
     
-    [SerializeField] private ItemRotation testItem;
-    [SerializeField] private RectTransform cellPrefab;
+    [SerializeField] private Item testItem;
+    [SerializeField] private InventoryCell cellPrefab;
 
     public Vector2 UICellSize => GetComponent<GridLayoutGroup>().cellSize;
 
@@ -45,12 +45,13 @@ public class InventoryManager : MonoBehaviour
         layout.GetMaxDimensions(out width, out height);
         grid.cellSize = new Vector2(uiWidth / width - grid.spacing.x, uiHeight / height - grid.spacing.y);
 
-        for (int x = 0; x < width; x++)
+        for (int y = 0; y < height; y++)
         {
-            for (int y = 0; y < height; y++)
+            for (int x = 0; x < width; x++)
             {
-                RectTransform cell = Instantiate(cellPrefab, transform);
+                InventoryCell cell = Instantiate(cellPrefab, transform);
                 cell.GetComponent<Image>().color = layout.GetCell(x, y) == "1" ? Color.gray : Color.black;
+                cell.CellPos = new Vector2(x, y);
             }
         }
     }
@@ -103,7 +104,6 @@ public class InventoryManager : MonoBehaviour
 
     public bool TryInsertItem(ItemRotation item, int x, int y)
     {
-        Debug.Log("Old storage: " + storage);
         char[] newStorage = storage.ToCharArray();
         // Loop over all fields the item can cover
         for (int i = 0; i < ItemRotation.SIZE; i++)
@@ -119,7 +119,6 @@ public class InventoryManager : MonoBehaviour
             }
         }
         storage = new string(newStorage);
-        Debug.Log("Inserting successful. New storage: " + storage);
         #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
         #endif
@@ -143,12 +142,12 @@ public class InventoryManager : MonoBehaviour
 
             GUILayout.Label( "Inventory Storage");
 
-            for (int x = 0; x < grid.width; x++)
+            for (int y = 0; y < grid.height; y++)
             {
                 GUILayout.BeginHorizontal();
-                for (int y = 0; y < grid.height; y++)
+                for (int x = 0; x < grid.width; x++)
                 {
-                    int n = grid.GetIndex( x, y);
+                    int n = grid.GetIndex(x, y);
 
                     var cell = grid.storage.Substring( n, 1);
 
@@ -163,7 +162,7 @@ public class InventoryManager : MonoBehaviour
                     if (GUILayout.Button( "",  GUILayout.Width(20)))
                     {
                         //grid.ToggleCell(x, y);
-                        grid.TryInsertItem(grid.testItem, x, y);
+                        grid.TryInsertItem(grid.testItem.CurrentRotation, x, y);
                     }
                 }
                 GUILayout.EndHorizontal();
