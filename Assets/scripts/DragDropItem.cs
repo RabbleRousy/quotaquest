@@ -10,7 +10,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
     private Item item;
     [SerializeField] private RectTransform upperLeft;
     public bool InInventory;
-    private Vector2 inventorySlot = new Vector2(-1, -1);
+    public Vector2 inventorySlot = new Vector2(-1, -1);
 
     private static DragDropItem draggedItem = null;
 
@@ -48,7 +48,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
     void TryDrop()
     {
         PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-        pointerEventData.position = upperLeft.position;
+        pointerEventData.position = item.CurrentRotation.Corner.position;
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerEventData, results);
 
@@ -60,8 +60,8 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
                 bool inserted = FindFirstObjectByType<InventoryManager>().TryInsertItem(item.CurrentRotation, (int)cellPos.x, (int)cellPos.y);
                 if (inserted)
                 {
-                    Vector3 upperLeftOffset = upperLeft.position - rectTransform.position;
-                    rectTransform.position = result.gameObject.transform.position - upperLeftOffset;
+                    Vector3 cornerOffset = item.CurrentRotation.Corner.position - rectTransform.position;
+                    rectTransform.position = result.gameObject.transform.position - cornerOffset;
                     InInventory = true;
                     IsDragging = false;
                     inventorySlot = cellPos;

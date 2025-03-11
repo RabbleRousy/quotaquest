@@ -12,6 +12,17 @@ public class ItemRotation : MonoBehaviour
 	private string format = "0000000000000000000000000";
 
 	public const int SIZE = 5;
+	public Transform Corner;
+
+	public bool HasCornerLeft;
+	public bool HasCornerTop;
+
+	private void Awake()
+	{
+		Corner = transform.Find("Corner");
+		HasCornerLeft = Corner.CompareTag("CornerTopLeft") || Corner.CompareTag("CornerBottomLeft");
+		HasCornerTop = Corner.CompareTag("CornerTopLeft") || Corner.CompareTag("CornerTopRight");
+	}
 
 	// for you to get stuff out of the grid to use in your game
 	public string GetCell( int x, int y)

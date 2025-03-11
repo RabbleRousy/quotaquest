@@ -108,10 +108,16 @@ public class InventoryManager : MonoBehaviour
             {
                 if (item.GetCell(i, j) == "0")
                     continue;
-                
+
                 // Item body covers this cell
-                if (!IsCellAvailable(x + i, y + j)) return false;
-                newStorage[GetIndex(x + i, y + j)] = '1';
+                int cellX = item.HasCornerLeft ? i : ItemRotation.SIZE - 1 - i;
+                int cellY = item.HasCornerTop ? j : ItemRotation.SIZE - 1 - j;
+                int targetX = x + (item.HasCornerLeft ? cellX : -cellX);
+                int targetY = y + (item.HasCornerTop ? cellY : -cellY);
+                
+                if (targetX < 0 || targetX >= width || targetY < 0 || targetY >= height) return false;
+                if (!IsCellAvailable(targetX, targetY)) return false;
+                newStorage[GetIndex(targetX, targetY)] = '1';
             }
         }
         storage = new string(newStorage);
@@ -133,9 +139,20 @@ public class InventoryManager : MonoBehaviour
                     continue;
                 
                 // Item body covers this cell, remove
-                if (GetCell(x + i, y + j) == "0")
+                int cellX = item.HasCornerLeft ? i : ItemRotation.SIZE - 1 - i;
+                int cellY = item.HasCornerTop ? j : ItemRotation.SIZE - 1 - j;
+                int targetX = x + (item.HasCornerLeft ? cellX : -cellX);
+                int targetY = y + (item.HasCornerTop ? cellY : -cellY);
+                
+                if (targetX < 0 || targetX >= width || targetY < 0 || targetY >= height) 
+                {
+                    Debug.LogError("Tried removing item, but went out of bounds!");
+                    return;
+                }
+                if (GetCell(targetX, targetY) == "0")
                     Debug.LogError("Tried removing item, but there is nothing stored at covered position (" + (x+i) + "/" + (y+j) + ")!");
-                newStorage[GetIndex(x + i, y + j)] = '0';
+                
+                newStorage[GetIndex(targetX, targetY)] = '0';
             }
         }
         storage = new string(newStorage);

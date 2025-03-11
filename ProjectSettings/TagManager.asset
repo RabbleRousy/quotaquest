@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Cell
   - DropArea
+  - CornerTopLeft
+  - CornerBottomLeft
+  - CornerTopRight
+  - CornerBottomRight
   layers:
   - Default
   - TransparentFX
