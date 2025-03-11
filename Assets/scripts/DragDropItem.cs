@@ -54,7 +54,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
 
         foreach (RaycastResult result in results)
         {
-            if (result.gameObject.CompareTag("cell"))
+            if (result.gameObject.CompareTag("Cell"))
             {
                 Vector2 cellPos = result.gameObject.GetComponent<InventoryCell>().CellPos;
                 bool inserted = FindFirstObjectByType<InventoryManager>().TryInsertItem(item.CurrentRotation, (int)cellPos.x, (int)cellPos.y);
@@ -69,7 +69,12 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
                 else
                 {
                     // TODO: Feedback, shake etc.
+                    Debug.LogWarning("Failed to drop item at cell (" + cellPos.x + "/" + cellPos.y + ")!");
                 }
+            }
+            else if (result.gameObject.CompareTag("DropArea"))
+            {
+                IsDragging = false;
             }
         }
     }
@@ -81,6 +86,8 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
         if (!InInventory) return;
         
         FindFirstObjectByType<InventoryManager>().RemoveItem(item.CurrentRotation, (int)inventorySlot.x, (int)inventorySlot.y);
+        InInventory = false;
+        inventorySlot = new Vector2(-1, -1);
     }
 
     private void Update()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7043987052308130261}
   m_Layer: 5
   m_Name: InventoryCell
-  m_TagString: cell
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -88,7 +88,7 @@ public class InventoryLayout : ScriptableObject
     
 #if UNITY_EDITOR
     [CustomEditor(typeof(InventoryLayout))]
-    public class InventoryFormatEditor : Editor
+    public class InventoryLayoutEditor : Editor
     {
         public override void OnInspectorGUI()
         {
