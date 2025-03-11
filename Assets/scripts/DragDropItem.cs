@@ -1,43 +1,30 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDropItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
+public class DragDropItem : MonoBehaviour, IPointerClickHandler
 {
     private Canvas canvas;
     private RectTransform rectTransform;
-    private bool isDragging = false;
+    private bool isDragging;
+    private Item item;
 
     private void Awake()
     {
         canvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
-       
+        item = GetComponent<Item>();
     }
-    public void OnPointerDown(PointerEventData eventData)
+
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            isDragging = true;
-            OnBeginDrag(eventData);
+            isDragging = !isDragging;
         }
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            isDragging = false;
-            OnEndDrag(eventData);
+            item.Rotate();
         }
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (isDragging)
-        {
-            Debug.Log("Dragmodus!");
-        }
-
     }
 
     private void Update()
@@ -48,11 +35,6 @@ public class DragDropItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, mousePosition, canvas.worldCamera, out Vector2 localPoint);
             rectTransform.anchoredPosition = localPoint;
         }
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        Debug.Log("Dropmodus!");
     }
 }
 
