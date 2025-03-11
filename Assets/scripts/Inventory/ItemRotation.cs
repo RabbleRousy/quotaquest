@@ -91,21 +91,6 @@ public class ItemRotation : MonoBehaviour
 		}
 	}
 
-	private void Start()
-	{
-		SetScale();
-	}
-
-	void SetScale()
-	{
-		Vector2 cellSize = FindFirstObjectByType<InventoryManager>().UICellSize;
-		int width, height;
-		GetMaxDimensions(out width, out height);
-		RectTransform rectTransform = GetComponent<RectTransform>();
-		Vector2 padding = 0.1f * cellSize;
-		rectTransform.sizeDelta = new Vector2(width * cellSize.x - padding.x, height * cellSize.y - padding.y);
-	}
-
 #if UNITY_EDITOR
 	[CustomEditor(typeof(ItemRotation))]
 	public class CheesyGridEditor : Editor
