@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b176afa857da18942b4fbdbd9872e367, type: 3}
   m_Name: BergpassEvent
   m_EditorClassIdentifier: 
-  eventName: 
-  chance: 0
-  effect: 
-  effectChance: 0
+  eventName: Bergpass
+  chance: 20
+  optionA: Bergpass
+  optionB: "H\xF6hle"
+  optionC: Waldweg
+  effect: Erdrutsch
+  effectChance: 10
