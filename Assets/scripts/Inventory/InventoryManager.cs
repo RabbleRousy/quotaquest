@@ -28,10 +28,6 @@ public class InventoryManager : MonoBehaviour
     {
         SetDimensions();
         storage = new string('0', width * height);
-    }
-
-    private void Start()
-    {
         PopulateUI();
     }
 
@@ -125,9 +121,27 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
-    public void RemoveItem()
+    public void RemoveItem(ItemRotation item, int x, int y)
     {
-        
+        char[] newStorage = storage.ToCharArray();
+        // Loop over all fields the item can cover
+        for (int i = 0; i < ItemRotation.SIZE; i++)
+        {
+            for (int j = 0; j < ItemRotation.SIZE; j++)
+            {
+                if (item.GetCell(i, j) == "0")
+                    continue;
+                
+                // Item body covers this cell, remove
+                if (GetCell(x + i, y + j) == "0")
+                    Debug.LogError("Tried removing item, but there is nothing stored at covered position (" + (x+i) + "/" + (y+j) + ")!");
+                newStorage[GetIndex(x + i, y + j)] = '0';
+            }
+        }
+        storage = new string(newStorage);
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(this);
+#endif
     }
     
 #if UNITY_EDITOR

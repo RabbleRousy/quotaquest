@@ -19,6 +19,23 @@ public class Item : MonoBehaviour
     {
         currentRotation = 0;
         UpdateRotations();
+        SetScale();
+    }
+    
+    void SetScale()
+    {
+        Vector2 cellSize = FindFirstObjectByType<InventoryManager>().UICellSize;
+        int maxSize = Int32.MinValue;
+        foreach (var rotation in rotations)
+        {
+            int width, height;
+            rotation.GetMaxDimensions(out width, out height);
+            if (width > maxSize) maxSize = width;
+            if (height > maxSize) maxSize = height;
+        }
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        Vector2 padding = 0.1f * cellSize;
+        rectTransform.sizeDelta = new Vector2(maxSize * cellSize.x - padding.x, maxSize * cellSize.y - padding.y);
     }
 
     public void Rotate()
