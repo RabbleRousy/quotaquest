@@ -98,10 +98,10 @@ public class InventoryLayout : ScriptableObject
 
             GUILayout.Label( "Inventory Layout");
 
-            for (int y = 0; y < SIZE; y++)
+            for (int x = 0; x < SIZE; x++)
             {
                 GUILayout.BeginHorizontal();
-                for (int x = 0; x < SIZE; x++)
+                for (int y = 0; y < SIZE; y++)
                 {
                     int n = grid.GetIndex( x, y);
 

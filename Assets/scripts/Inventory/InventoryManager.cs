@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     private string storage;
     
     [SerializeField] private ItemRotation testItem;
+    [SerializeField] private RectTransform cellPrefab;
 
     void SetDimensions()
     {
@@ -24,6 +26,31 @@ public class InventoryManager : MonoBehaviour
     {
         SetDimensions();
         storage = new string('0', width * height);
+    }
+
+    private void Start()
+    {
+        PopulateUI();
+    }
+
+    void PopulateUI()
+    {
+        GridLayoutGroup grid = GetComponent<GridLayoutGroup>();
+        RectTransform rect = GetComponent<RectTransform>();
+        float uiWidth = rect.rect.width - grid.padding.left - grid.padding.right;
+        float uiHeight = rect.rect.height - grid.padding.top - grid.padding.bottom;
+        
+        layout.GetMaxDimensions(out width, out height);
+        grid.cellSize = new Vector2(uiWidth / width - grid.spacing.x, uiHeight / height - grid.spacing.y);
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                RectTransform cell = Instantiate(cellPrefab, transform);
+                cell.GetComponent<Image>().color = layout.GetCell(x, y) == "1" ? Color.gray : Color.black;
+            }
+        }
     }
 
     int GetIndex( int x, int y)
@@ -114,10 +141,10 @@ public class InventoryManager : MonoBehaviour
 
             GUILayout.Label( "Inventory Storage");
 
-            for (int y = 0; y < grid.height; y++)
+            for (int x = 0; x < grid.width; x++)
             {
                 GUILayout.BeginHorizontal();
-                for (int x = 0; x < grid.width; x++)
+                for (int y = 0; y < grid.height; y++)
                 {
                     int n = grid.GetIndex( x, y);
 
