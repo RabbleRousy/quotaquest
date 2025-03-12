@@ -16,3 +16,8 @@ MonoBehaviour:
   chance: 3
   effect: Schleim
   effectChance: 30
+  itemAmount: 10
+  possibleItems:
+  - {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+  - {fileID: 4037001013355123739, guid: ec9cb97a9713246cbaa003f4699ab209, type: 3}
+  - {fileID: 6995887252275706486, guid: a76242bd070c0471285012211118f286, type: 3}

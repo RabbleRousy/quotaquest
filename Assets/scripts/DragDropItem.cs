@@ -90,8 +90,12 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
     {
         IsDragging = true;
         transform.SetAsLastSibling();
-        
-        if (InDropArea) FindFirstObjectByType<DropAreaManager>().RemoveItem(item);
+
+        if (InDropArea)
+        {
+            FindFirstObjectByType<DropAreaManager>().RemoveItem(item);
+            InDropArea = false;
+        }
 
         if (!InInventory) return;
         

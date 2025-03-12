@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class DropAreaManager : MonoBehaviour
 {
     [SerializeField] private List<Item> items = new List<Item>();
+    [SerializeField] private Transform[] itemSpawnPoints;
 
     public void AddItem(Item item) => items.Add(item);
     public void RemoveItem(Item item) => items.Remove(item);
@@ -19,5 +18,17 @@ public class DropAreaManager : MonoBehaviour
             Destroy(item.gameObject);
         }
         items.Clear();
+    }
+
+    public void SpawnItems(EventData e)
+    {
+        Transform canvas = FindFirstObjectByType<Canvas>().transform;
+        for (int i = 0; i < e.itemAmount; i++)
+        {
+            Item item = Instantiate(e.possibleItems[Random.Range(0, e.possibleItems.Length)], canvas);
+            item.transform.position = itemSpawnPoints[i].position;
+            item.GetComponent<DragDropItem>().InDropArea = true;
+            AddItem(item);
+        }
     }
 }

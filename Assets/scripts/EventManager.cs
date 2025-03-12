@@ -61,7 +61,7 @@ public class EventManager : MonoBehaviour
         inventoryWindow.SetActive(true);
         
         dropArea.SetActive(true);
-        //FindFirstObjectByType<ItemSpawner>().SpawnRandomItems(5); // pass EventData
+        FindFirstObjectByType<DropAreaManager>().SpawnItems(e);
         
         this.gameObject.SetActive(false);
     }
