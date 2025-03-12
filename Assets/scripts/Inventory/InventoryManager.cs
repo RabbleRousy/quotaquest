@@ -13,29 +13,7 @@ public class InventoryManager : MonoBehaviour
     
     [SerializeField] private Item testItem;
     [SerializeField] private InventoryCell cellPrefab;
-    public GameObject inventoryPanel;
-    public GameObject dropAreaPanel;
-    public ItemSpawner itemSpawner;
-
-    void Start()
-    {
-        
-        EventManager.OnEventTriggered += OpenInventoryAndDropArea;
-    }
-
-
-    void OnDestroy()
-    {
-       
-        EventManager.OnEventTriggered -= OpenInventoryAndDropArea;
-    }
-
-    void OpenInventoryAndDropArea()
-    {
-        inventoryPanel.SetActive(true);
-        dropAreaPanel.SetActive(true);
-        itemSpawner.SpawnRandomItems(5);
-    }
+    
     public Vector2 UICellSize => GetComponent<GridLayoutGroup>().cellSize;
 
     void SetDimensions()

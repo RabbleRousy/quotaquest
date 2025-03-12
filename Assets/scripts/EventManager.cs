@@ -12,7 +12,6 @@ public class EventManager : MonoBehaviour
     public TMPro.TMP_Text optionButton2Text;
 
     [SerializeField] private GameObject inventoryWindow, dropArea;
-    public static event Action OnEventTriggered; 
 
     void Start()
     {
@@ -49,11 +48,6 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void SelectRandomEvent()
-    {
-        OnEventTriggered?.Invoke(); // Event ausl�sen
-    }
-
     private void DisplayOptions(EventData event1, EventData event2)
     {
 
@@ -84,8 +78,7 @@ public class EventManager : MonoBehaviour
         inventoryWindow.SetActive(true);
         
         dropArea.SetActive(true);
-        // TODO:
-        //dropArea.GetComponent<DropAreaManager>().SpawnItems(e)
+        //FindFirstObjectByType<ItemSpawner>().SpawnRandomItems(5); // pass EventData
         
         this.gameObject.SetActive(false);
     }
