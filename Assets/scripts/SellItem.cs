@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Ergänzung für TMPro
+using TMPro; // Ergï¿½nzung fï¿½r TMPro
 
 public class SellItem : MonoBehaviour
 {
-    public TMP_Text quoteText; // Ergänzung für TMPro
-    public TMP_Text moneyText; // Ergänzung für die Anzeige des aktuellen Geldes
+    public TMP_Text quoteText; // Ergï¿½nzung fï¿½r TMPro
+    public TMP_Text moneyText; // Ergï¿½nzung fï¿½r die Anzeige des aktuellen Geldes
     public Button sellButton;
     public GameObject itemTestPrefab;
     public GameStateManager gameStateManager;
@@ -17,7 +17,6 @@ public class SellItem : MonoBehaviour
     {
         UpdateQuote();
         UpdateMoneyText();
-        sellButton.onClick.AddListener(OnSell);
     }
 
     void UpdateQuote()
@@ -31,19 +30,18 @@ public class SellItem : MonoBehaviour
         moneyText.text = "aktuelles Geld: " + gameStateManager.gameState.currentMoney;
     }
 
-    void OnSell()
+    public void Sell(Item item)
     {
-        GameObject item = Instantiate(itemTestPrefab, transform);
-        int itemQuote = Random.Range(25, 100); // Beispiel für unterschiedliche Quotes pro Item
-        Debug.Log("Item verkauft: " + item.name + " für " + itemQuote + " Münzen");
+        int itemQuote = item.value;
+        Debug.Log("Item verkauft: " + item.name + " fuer " + itemQuote + " Muenzen");
         currentQuoteProgress += itemQuote;
 
-        // Überprüfe, ob die Quote erfüllt ist
+        // Ueberpruefe, ob die Quote erfuellt ist
         if (currentQuoteProgress >= gameStateManager.gameState.nextQuote)
         {
-            gameStateManager.UpdateMoney(gameStateManager.gameState.nextQuote); 
-            currentQuoteProgress = 0; // Setze den Fortschritt zurück
-            currentQuote += 250; // Erhöhe die Quote (Beispiel: Erhöhung um 250)
+            gameStateManager.UpdateMoney(currentQuoteProgress - gameStateManager.gameState.nextQuote); 
+            currentQuoteProgress = 0; // Setze den Fortschritt zurï¿½ck
+            currentQuote += 250; // Erhï¿½he die Quote (Beispiel: Erhï¿½hung um 250)
             UpdateQuote(); 
             UpdateMoneyText(); 
         }
@@ -51,5 +49,6 @@ public class SellItem : MonoBehaviour
         {
             quoteText.text = currentQuoteProgress + "/" + gameStateManager.gameState.nextQuote;
         }
+        Destroy(item.gameObject);
     }
 }

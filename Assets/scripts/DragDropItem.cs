@@ -54,6 +54,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
 
         foreach (RaycastResult result in results)
         {
+            print(result.gameObject.name);
             if (result.gameObject.CompareTag("Cell"))
             {
                 Vector2 cellPos = result.gameObject.GetComponent<InventoryCell>().CellPos;
@@ -76,12 +77,18 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
             {
                 IsDragging = false;
             }
+            else if (result.gameObject.CompareTag("SellArea"))
+            {
+                IsDragging = false;
+                FindFirstObjectByType<SellItem>().Sell(item);
+            }
         }
     }
 
     void PickUp()
     {
         IsDragging = true;
+        transform.SetAsLastSibling();
 
         if (!InInventory) return;
         

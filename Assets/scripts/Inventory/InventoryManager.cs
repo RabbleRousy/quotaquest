@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor;
@@ -161,9 +162,22 @@ public class InventoryManager : MonoBehaviour
 #endif
     }
 
-    public void TriggerAllItemEffects()
+    public void OnConfirmSorting()
     {
-        // TODO
+        StartCoroutine(TriggerAllItemEffects());
+    }
+
+    private IEnumerator TriggerAllItemEffects()
+    {
+        // TODO: Trigger Effects Coroutine etc.
+        yield return new WaitForSeconds(2f);
+
+        OpenSellWindow();
+    }
+
+    void OpenSellWindow()
+    {
+        FindFirstObjectByType<SellItem>(FindObjectsInactive.Include).gameObject.SetActive(true);
     }
     
 #if UNITY_EDITOR

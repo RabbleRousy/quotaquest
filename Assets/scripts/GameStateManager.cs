@@ -21,7 +21,7 @@ public class GameStateManager : MonoBehaviour
     public void UpdateQuote(int newQuote)
     {
         gameState.nextQuote = newQuote;
-        Debug.Log("Nächste Quote: " + gameState.nextQuote);
+        Debug.Log("Naechste Quote: " + gameState.nextQuote);
     }
 
     public void AddStrike()

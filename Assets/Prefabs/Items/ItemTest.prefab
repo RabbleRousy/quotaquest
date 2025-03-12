@@ -87,6 +87,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   format: 0000000000000000000100011
+  Corner: {fileID: 0}
+  HasCornerLeft: 0
+  HasCornerTop: 0
 --- !u!222 &6472764797656207103
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -177,6 +180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   format: 0001100001000000000000000
+  Corner: {fileID: 0}
+  HasCornerLeft: 0
+  HasCornerTop: 0
 --- !u!222 &2386259119250072332
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -267,6 +273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   format: 1100010000000000000000000
+  Corner: {fileID: 0}
+  HasCornerLeft: 0
+  HasCornerTop: 0
 --- !u!222 &6491658675592828423
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -358,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd2e48acadf2490a8cc842a3c8e823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
+  value: 100
   rotations: []
 --- !u!114 &8464263903044350849
 MonoBehaviour:
@@ -374,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperLeft: {fileID: 3977619216432555779}
   InInventory: 0
+  inventorySlot: {x: -1, y: -1}
 --- !u!1 &6776093887252994072
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +471,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   format: 0000000000000001000011000
+  Corner: {fileID: 0}
+  HasCornerLeft: 0
+  HasCornerTop: 0
 --- !u!222 &3256254040914685667
 CanvasRenderer:
   m_ObjectHideFlags: 0

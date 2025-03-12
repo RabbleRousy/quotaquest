@@ -33,9 +33,8 @@ public class MessageWindow : MonoBehaviour
 
     private void CloseDropAreaAndTriggerEffectsOnce()
     {
-        Debug.Log("CloseDropAreaAndTriggerEffectsOnce!");
         GameObject.Find("DropArea").SetActive(false);
-        FindFirstObjectByType<InventoryManager>().TriggerAllItemEffects();
+        FindFirstObjectByType<InventoryManager>().OnConfirmSorting();
         // Unregister self so this only triggers once on button press
         confirmButton.onClick.RemoveListener(CloseDropAreaAndTriggerEffectsOnce);
     }
