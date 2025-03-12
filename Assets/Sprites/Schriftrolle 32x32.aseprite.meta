@@ -125,7 +125,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Schriftrolle 32x32
     originalName: 
-    pivot: {x: 0.55813956, y: -0.02173913}
+    pivot: {x: 0.48648646, y: -0.02173913}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,7 +133,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 43
+      width: 37
       height: 46
     spriteID: 861a76ae8bcd64791bb14ca08d1d1b3c
     spriteBone: []
@@ -157,9 +157,9 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 6
         y: 1
-        width: 43
+        width: 37
         height: 46
       spriteId: 861a76ae8bcd64791bb14ca08d1d1b3c
     linkedCells: []
