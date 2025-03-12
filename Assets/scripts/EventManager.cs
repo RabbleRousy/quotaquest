@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public TMPro.TMP_Text optionButton1Text;
     public TMPro.TMP_Text optionButton2Text;
 
+    [SerializeField] private GameObject inventoryWindow, dropArea;
     public static event Action OnEventTriggered; 
 
     void Start()
@@ -23,13 +24,26 @@ public class EventManager : MonoBehaviour
 
         float randomValue = Random.value * totalChance;
         float cumulativeChance = 0f;
+        EventData randomEvent1 = null;
 
         foreach (EventData eventData in events)
         {
             cumulativeChance += eventData.chance;
             if (randomValue <= cumulativeChance)
             {
-                DisplayOptions(eventData);
+                randomEvent1 = eventData;
+                break;
+            }
+        }
+        
+        randomValue = Random.value * totalChance;
+        cumulativeChance = 0f;
+        foreach (var eventData in events)
+        {
+            cumulativeChance += eventData.chance;
+            if (randomValue <= cumulativeChance && randomEvent1 != eventData)
+            {
+                DisplayOptions(randomEvent1, eventData);
                 return;
             }
         }
@@ -37,35 +51,22 @@ public class EventManager : MonoBehaviour
 
     public void SelectRandomEvent()
     {
-        OnEventTriggered?.Invoke(); // Event auslösen
+        OnEventTriggered?.Invoke(); // Event auslï¿½sen
     }
 
-    private void DisplayOptions(EventData selectedEvent)
+    private void DisplayOptions(EventData event1, EventData event2)
     {
-        Debug.Log("Selected Event: " + selectedEvent.eventName);
-        Debug.Log("Chance: " + selectedEvent.chance);
-        Debug.Log("Effect: " + selectedEvent.effect);
-        Debug.Log("Effect Chance: " + selectedEvent.effectChance);
-
-        string[] options = { selectedEvent.optionA, selectedEvent.optionB, selectedEvent.optionC };
-
-        int firstOptionIndex = Random.Range(0, options.Length);
-        int secondOptionIndex;
-        do
-        {
-            secondOptionIndex = Random.Range(0, options.Length);
-        } while (secondOptionIndex == firstOptionIndex);
 
         if (optionButton1Text != null && optionButton2Text != null)
         {
-            optionButton1Text.text = options[firstOptionIndex];
-            optionButton2Text.text = options[secondOptionIndex];
+            optionButton1Text.text = event1.eventName;
+            optionButton2Text.text = event2.eventName;
 
             optionAButton.onClick.RemoveAllListeners();
-            optionAButton.onClick.AddListener(() => ExecuteOption(options[firstOptionIndex]));
+            optionAButton.onClick.AddListener(() => ExecuteEvent(event1));
 
             optionBButton.onClick.RemoveAllListeners();
-            optionBButton.onClick.AddListener(() => ExecuteOption(options[secondOptionIndex]));
+            optionBButton.onClick.AddListener(() => ExecuteEvent(event2));
         }
         else
         {
@@ -73,9 +74,19 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    private void ExecuteOption(string option)
+    private void ExecuteEvent(EventData e)
     {
-        float randomValue = Random.value;
-        Debug.Log("Executed Option: " + option);
+        MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
+        msgWindow.gameObject.SetActive(true);
+        msgWindow.SetHeader(e.eventName + " Event!");
+        msgWindow.SetDescription(e.eventName + " event description");
+        
+        inventoryWindow.SetActive(true);
+        
+        dropArea.SetActive(true);
+        // TODO:
+        //dropArea.GetComponent<DropAreaManager>().SpawnItems(e)
+        
+        this.gameObject.SetActive(false);
     }
 }
