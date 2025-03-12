@@ -5,6 +5,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public int value;
+    public IItemEffect effect;
+    public bool HasEffect => effect != null;
 
     [SerializeField] private ItemRotation[] rotations;
     private int currentRotation;
@@ -54,23 +56,30 @@ public class Item : MonoBehaviour
             rotations[i].gameObject.SetActive(i == currentRotation);
         }
     }
-}
 
-#if UNITY_EDITOR
-[CustomEditor(typeof(Item))]
-public class ItemEditor : Editor
-{
-    public override void OnInspectorGUI()
+    public void ActivateEffects()
     {
-        if (Application.isPlaying)
-        {
-            if (GUILayout.Button("Rotate"))
-            {
-                Item item = (Item)target;
-                item.Rotate();
-            }
-        }
-        base.OnInspectorGUI();
+        if (!HasEffect) return;
+        
+        effect.Activate(this);
     }
-}
+    
+#if UNITY_EDITOR
+    [CustomEditor(typeof(Item))]
+    public class ItemEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            if (Application.isPlaying)
+            {
+                if (GUILayout.Button("Rotate"))
+                {
+                    Item item = (Item)target;
+                    item.Rotate();
+                }
+            }
+            base.OnInspectorGUI();
+        }
+    }
 #endif
+}

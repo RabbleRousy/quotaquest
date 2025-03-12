@@ -188,9 +188,14 @@ public class InventoryManager : MonoBehaviour
 
     private IEnumerator TriggerAllItemEffects()
     {
-        // TODO: Trigger Effects Coroutine etc.
-        yield return new WaitForSeconds(2f);
-
+        foreach (var item in items)
+        {
+            if (item?.HasEffect ?? false)
+            {
+                item.ActivateEffects();
+                yield return new WaitForSeconds(.5f);
+            }
+        }
         OpenSellWindow();
     }
 
