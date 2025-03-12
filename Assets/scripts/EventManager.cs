@@ -53,15 +53,15 @@ public class EventManager : MonoBehaviour
 
     private void ExecuteEvent(EventData e)
     {
-        MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
-        msgWindow.gameObject.SetActive(true);
-        msgWindow.SetHeader(e.eventName + " Event!");
-        msgWindow.SetDescription(e.eventName + " event description");
-        
         inventoryWindow.SetActive(true);
         
         dropArea.SetActive(true);
         FindFirstObjectByType<DropAreaManager>().SpawnItems(e);
+        
+        MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
+        msgWindow.gameObject.SetActive(true);
+        msgWindow.SetHeader(e.eventName + " Event!");
+        msgWindow.SetDescription(e.eventName + " event description");
         
         this.gameObject.SetActive(false);
     }
