@@ -10,6 +10,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private InventoryLayout layout;
     private int width, height;
+    public int Width => width; public int Height => height;
     [SerializeField] private string storage;
     
     [SerializeField] private Item testItem;
@@ -140,6 +141,12 @@ public class InventoryManager : MonoBehaviour
         int index = (int)(GetCell(x, y).ToCharArray()[0] - '1');
         if (index < 0) return null;
         return items[index];
+    }
+
+    public Vector3 GetWorldPos(Vector2 cell)
+    {
+        int n = GetIndex((int)cell.x, (int)cell.y);
+        return transform.GetChild(n).position;
     }
     
     void ToggleCell( int x, int y)

@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fd93bb1465f4fa29ad696f932fee98, type: 3}
   m_Name: BuffValueEffect
   m_EditorClassIdentifier: 
+  numTiles: 5
+  scale: 2
+  cellHighlight: {fileID: 5915030775112884557, guid: 028b817f2c5892449b5fef6b6c37c046, type: 3}
