@@ -7,8 +7,7 @@ public class DropAreaManager : MonoBehaviour
     public Transform dropAreaContent;
 
     void Start()
-    {
-       
+    { 
         scrollRect.content = dropAreaContent.GetComponent<RectTransform>();
     }
 }
