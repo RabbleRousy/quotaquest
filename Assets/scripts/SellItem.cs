@@ -33,7 +33,6 @@ public class SellItem : MonoBehaviour
     public void Sell(Item item)
     {
         int itemQuote = item.value;
-        Debug.Log("Item verkauft: " + item.name + " fuer " + itemQuote + " Muenzen");
         currentQuoteProgress += itemQuote;
 
         // Ueberpruefe, ob die Quote erfuellt ist
