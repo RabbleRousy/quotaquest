@@ -35,7 +35,10 @@ public class Item : MonoBehaviour
         }
         RectTransform rectTransform = GetComponent<RectTransform>();
         Vector2 padding = 0.1f * cellSize;
-        rectTransform.sizeDelta = new Vector2(maxSize * cellSize.x - padding.x, maxSize * cellSize.y - padding.y);
+        Vector2 currentSize = rectTransform.sizeDelta;
+        Vector2 targetSize = new Vector2(maxSize * cellSize.x - padding.x, maxSize * cellSize.y - padding.y);
+        Vector2 scale = targetSize / currentSize;
+        rectTransform.localScale = new Vector3(scale.x, scale.y, 1);
     }
 
     public void Rotate()
