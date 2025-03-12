@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -15,37 +16,19 @@ public class EventManager : MonoBehaviour
 
     void OnEnable()
     {
-        float totalChance = 0f;
-        foreach (EventData eventData in events)
+        List<int> pool = new List<int>();
+        for (int j = 0; j < events.Length; j++)
         {
-            totalChance += eventData.chance;
+            for (int i = 0; i < events[j].chance; i++)
+                pool.Add(j);
         }
-
-        float randomValue = Random.value * totalChance;
-        float cumulativeChance = 0f;
-        EventData randomEvent1 = null;
-
-        foreach (EventData eventData in events)
+        int randomEvent1 = pool[Random.Range(0, pool.Count)];
+        int randomEvent2 = randomEvent1;
+        while (randomEvent1 == randomEvent2)
         {
-            cumulativeChance += eventData.chance;
-            if (randomValue <= cumulativeChance)
-            {
-                randomEvent1 = eventData;
-                break;
-            }
+            randomEvent2 = pool[Random.Range(0, pool.Count)];
         }
-        
-        randomValue = Random.value * totalChance;
-        cumulativeChance = 0f;
-        foreach (var eventData in events)
-        {
-            cumulativeChance += eventData.chance;
-            if (randomValue <= cumulativeChance && randomEvent1 != eventData)
-            {
-                DisplayOptions(randomEvent1, eventData);
-                return;
-            }
-        }
+        DisplayOptions(events[randomEvent1], events[randomEvent2]);
     }
 
     private void DisplayOptions(EventData event1, EventData event2)

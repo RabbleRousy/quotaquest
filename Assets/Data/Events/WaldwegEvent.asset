@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b176afa857da18942b4fbdbd9872e367, type: 3}
-  m_Name: "H\xF6hlenEvent"
+  m_Name: WaldwegEvent
   m_EditorClassIdentifier: 
-  eventName: "H\xF6hle"
-  chance: 30
-  optionA: Bergpass
-  optionB: "H\xF6hle"
-  optionC: Waldweg
-  effect: Schleim
-  effectChance: 30
+  eventName: Waldweg
+  chance: 3
+  effect: Elster
+  effectChance: 20

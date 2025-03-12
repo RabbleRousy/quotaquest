@@ -4,7 +4,7 @@ using UnityEngine;
 public class EventData : ScriptableObject
 {
     public string eventName;
-    public float chance; // Wahrscheinlichkeit, wie oft das Event vorkommt
+    public int chance; // Wahrscheinlichkeit, wie oft das Event vorkommt
     public string effect;
     public float effectChance; // Wahrscheinlichkeit f�r den Effekt
 }
