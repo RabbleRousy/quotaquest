@@ -9,7 +9,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
     private RectTransform rectTransform;
     private Item item;
     [SerializeField] private RectTransform upperLeft;
-    public bool InInventory;
+    public bool InInventory, InDropArea;
     public Vector2 inventorySlot = new Vector2(-1, -1);
 
     private static DragDropItem draggedItem = null;
@@ -75,6 +75,8 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
             else if (result.gameObject.CompareTag("DropArea"))
             {
                 IsDragging = false;
+                InDropArea = true;
+                FindFirstObjectByType<DropAreaManager>().AddItem(item);
             }
             else if (result.gameObject.CompareTag("SellArea"))
             {
@@ -88,6 +90,8 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
     {
         IsDragging = true;
         transform.SetAsLastSibling();
+        
+        if (InDropArea) FindFirstObjectByType<DropAreaManager>().RemoveItem(item);
 
         if (!InInventory) return;
         

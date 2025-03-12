@@ -1439,10 +1439,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropArea
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1723551352377027722, guid: 3d1c16d52bb8a4e6facb37e1593a1871, type: 3}
+    - {fileID: 2638836278498855833, guid: 3d1c16d52bb8a4e6facb37e1593a1871, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7287718742103137383, guid: 3d1c16d52bb8a4e6facb37e1593a1871, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2224056328350384151}
   m_SourcePrefab: {fileID: 100100000, guid: 3d1c16d52bb8a4e6facb37e1593a1871, type: 3}
 --- !u!224 &2224056328350384147 stripped
 RectTransform:
@@ -1454,6 +1459,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7287718742103137383, guid: 3d1c16d52bb8a4e6facb37e1593a1871, type: 3}
   m_PrefabInstance: {fileID: 2224056328350384146}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2224056328350384151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224056328350384148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904112dd5459ec34f9bff8761b0ba891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
 --- !u!1001 &7364748734804533116
 PrefabInstance:
   m_ObjectHideFlags: 0

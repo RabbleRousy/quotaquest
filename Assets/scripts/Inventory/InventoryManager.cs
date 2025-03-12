@@ -16,6 +16,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private InventoryCell cellPrefab;
     
     public Vector2 UICellSize => GetComponent<GridLayoutGroup>().cellSize;
+    
+    [SerializeField]
+    private List<Item> items = new List<Item>();
 
     void SetDimensions()
     {
@@ -30,6 +33,22 @@ public class InventoryManager : MonoBehaviour
         SetDimensions();
         storage = new string('0', width * height);
         PopulateUI();
+    }
+
+    private void OnDisable()
+    {
+        foreach (var item in items)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnEnable()
+    {
+        foreach (var item in items)
+        {
+            item.gameObject.SetActive(true);
+        }
     }
 
     void PopulateUI()
@@ -125,6 +144,7 @@ public class InventoryManager : MonoBehaviour
         #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
         #endif
+        items.Add(item.GetComponentInParent<Item>());
         return true;
     }
 
@@ -160,6 +180,7 @@ public class InventoryManager : MonoBehaviour
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
 #endif
+        items.Remove(item.GetComponentInParent<Item>());
     }
 
     public void OnConfirmSorting()
