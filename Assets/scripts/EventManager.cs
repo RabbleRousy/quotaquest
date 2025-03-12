@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class EventManager : MonoBehaviour
 {
@@ -9,9 +11,10 @@ public class EventManager : MonoBehaviour
     public TMPro.TMP_Text optionButton1Text;
     public TMPro.TMP_Text optionButton2Text;
 
+    public static event Action OnEventTriggered; 
+
     void Start()
     {
-
         float totalChance = 0f;
         foreach (EventData eventData in events)
         {
@@ -30,10 +33,11 @@ public class EventManager : MonoBehaviour
                 return;
             }
         }
-
     }
+
     public void SelectRandomEvent()
     {
+        OnEventTriggered?.Invoke(); // Event auslösen
     }
 
     private void DisplayOptions(EventData selectedEvent)
@@ -43,7 +47,6 @@ public class EventManager : MonoBehaviour
         Debug.Log("Effect: " + selectedEvent.effect);
         Debug.Log("Effect Chance: " + selectedEvent.effectChance);
 
-        // Wähle zwei zufällige Optionen aus den drei verfügbaren
         string[] options = { selectedEvent.optionA, selectedEvent.optionB, selectedEvent.optionC };
 
         int firstOptionIndex = Random.Range(0, options.Length);
@@ -53,13 +56,11 @@ public class EventManager : MonoBehaviour
             secondOptionIndex = Random.Range(0, options.Length);
         } while (secondOptionIndex == firstOptionIndex);
 
-      
         if (optionButton1Text != null && optionButton2Text != null)
         {
             optionButton1Text.text = options[firstOptionIndex];
             optionButton2Text.text = options[secondOptionIndex];
 
-       
             optionAButton.onClick.RemoveAllListeners();
             optionAButton.onClick.AddListener(() => ExecuteOption(options[firstOptionIndex]));
 
