@@ -182,6 +182,11 @@ public class InventoryManager : MonoBehaviour
         EditorUtility.SetDirty(this);
 #endif
     }
+
+    public void TriggerAllItemEffects()
+    {
+        // TODO
+    }
     
 #if UNITY_EDITOR
     [CustomEditor(typeof(InventoryManager))]
