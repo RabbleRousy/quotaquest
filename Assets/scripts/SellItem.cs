@@ -1,17 +1,22 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro; // Erg�nzung f�r TMPro
+using TMPro; 
 
 public class SellItem : MonoBehaviour
 {
-    public TMP_Text quoteText; // Erg�nzung f�r TMPro
-    public TMP_Text moneyText; // Erg�nzung f�r die Anzeige des aktuellen Geldes
-    public Button sellButton;
-    public GameObject itemTestPrefab;
+    public TMP_Text quoteText; // Ergaenzung fuer TMPro
+    public TMP_Text moneyText; // Ergaenzung fuer die Anzeige des aktuellen Geldes
     public GameStateManager gameStateManager;
 
     private int currentQuote = 500; // Startquote
-    private int currentQuoteProgress = 0;
+    private int currentQuoteProgress;
+
+    private bool quotaReached;
+
+    private void OnEnable()
+    {
+        currentQuoteProgress = 0;
+        quotaReached = false;
+    }
 
     void Start()
     {
@@ -22,52 +27,86 @@ public class SellItem : MonoBehaviour
     void UpdateQuote()
     {
         gameStateManager.UpdateQuote(currentQuote);
-        quoteText.text = currentQuoteProgress + "/" + gameStateManager.gameState.nextQuote;
+        quoteText.text = "Quota: " + currentQuoteProgress + "/" + gameStateManager.gameState.nextQuote + " $";
     }
 
     void UpdateMoneyText()
     {
-        moneyText.text = "aktuelles Geld: " + gameStateManager.gameState.currentMoney;
+        moneyText.text = "Surplus: " + gameStateManager.gameState.currentMoney + " $";
     }
 
     public void Sell(Item item)
     {
         int itemQuote = item.value;
-        currentQuoteProgress += itemQuote;
 
-        // Ueberpruefe, ob die Quote erfuellt ist
-        if (currentQuoteProgress >= gameStateManager.gameState.nextQuote)
+        if (currentQuoteProgress < gameStateManager.gameState.nextQuote)
         {
-            OnQuotaReached();
+            currentQuoteProgress += itemQuote;
+
+            // Ueberpruefe, ob die Quote erfuellt ist
+            if (currentQuoteProgress >= gameStateManager.gameState.nextQuote)
+            {
+                OnQuotaReached();
+            }
+            else
+            {
+                quoteText.text = "Quota: " + currentQuoteProgress + "/" + gameStateManager.gameState.nextQuote + " $";
+            }
         }
         else
         {
-            quoteText.text = currentQuoteProgress + "/" + gameStateManager.gameState.nextQuote;
+            gameStateManager.UpdateMoney(itemQuote);
+            UpdateMoneyText();
         }
+        
         Destroy(item.gameObject);
     }
 
     private void OnQuotaReached()
     {
+        quotaReached = true;
+        
         gameStateManager.UpdateMoney(currentQuoteProgress - gameStateManager.gameState.nextQuote); 
-        currentQuoteProgress = 0; // Setze den Fortschritt zurueck
-        currentQuote += 250; // Erhoehe die Quote (Beispiel: Erhoehung um 250)
-        UpdateQuote(); 
         UpdateMoneyText();
+        
+        currentQuoteProgress = gameStateManager.gameState.nextQuote;
+        UpdateQuote();
+        
+        gameStateManager.NextQuota();
 
         MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
         msgWindow.SetHeader("Quota reached!");
-        msgWindow.SetDescription("Congratulations! You reached your quota this time. Your next quota is $" + gameStateManager.gameState.nextQuote);
-        msgWindow.SetConfirmButtonText("Next Turn");
-        msgWindow.confirmButton.onClick.AddListener(TriggerNextTurnOnce);
+        msgWindow.SetDescription("Congratulations! You reached your quota this time. Your next quota is $" + gameStateManager.gameState.nextQuote + 
+                                 "\nContinue selling for surplus or keep items for the next turn.");
     }
 
-    private void TriggerNextTurnOnce()
+    public void OnCloseButton()
     {
-        gameObject.SetActive(false);
+        if (quotaReached)
+        {
+            ToEventScreen();
+            return;
+        }
+        MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
+        msgWindow.gameObject.SetActive(true);
+        msgWindow.SetHeader("Finish turn?");
+        msgWindow.SetDescription("You have not reached your quota for this turn. Continuing will yield a STRIKE.");
+        msgWindow.SetConfirmButtonText("Confirm");
+        msgWindow.confirmButton.onClick.AddListener(ToEventScreen);
+        msgWindow.cancelButton.gameObject.SetActive(true);
+        msgWindow.cancelButton.onClick.AddListener(() => msgWindow.confirmButton.onClick.RemoveListener(ToEventScreen));
+    }
+
+    private void ToEventScreen()
+    {
+        // If quota not reached, strike
+        if (!quotaReached)
+            gameStateManager.gameState.strikes++;
+        
         FindFirstObjectByType<InventoryManager>().transform.parent.gameObject.SetActive(false);
-        FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(TriggerNextTurnOnce);
         FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
+        FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToEventScreen);
+        gameObject.SetActive(false);
     }
 }

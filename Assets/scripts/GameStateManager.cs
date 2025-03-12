@@ -4,10 +4,10 @@ public class GameStateManager : MonoBehaviour
 {
     public GameState gameState;
 
-    void Start()
+    void Awake()
     {
         // Initialisierung
-        gameState.currentMoney = 1000; // Beispielwerte
+        gameState.currentMoney = 0; // Beispielwerte
         gameState.nextQuote = 500; 
         gameState.strikes = 0; 
     }
@@ -25,5 +25,10 @@ public class GameStateManager : MonoBehaviour
     public void AddStrike()
     {
         gameState.strikes++;
+    }
+
+    public void NextQuota()
+    {
+        gameState.nextQuote += 250;
     }
 }
