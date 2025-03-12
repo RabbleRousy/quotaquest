@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sell Window
       objectReference: {fileID: 0}
+    - target: {fileID: 9182974886480907443, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

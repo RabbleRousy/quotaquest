@@ -13,7 +13,7 @@ public class EventManager : MonoBehaviour
 
     [SerializeField] private GameObject inventoryWindow, dropArea;
 
-    void Start()
+    void OnEnable()
     {
         float totalChance = 0f;
         foreach (EventData eventData in events)

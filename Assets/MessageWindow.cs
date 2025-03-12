@@ -39,6 +39,11 @@ public class MessageWindow : MonoBehaviour
         confirmButton.onClick.RemoveListener(CloseDropAreaAndTriggerEffectsOnce);
     }
 
+    private void OnEnable()
+    {
+        transform.SetAsLastSibling();
+    }
+
     private void OnDisable()
     {
         SetConfirmButtonText("OK");

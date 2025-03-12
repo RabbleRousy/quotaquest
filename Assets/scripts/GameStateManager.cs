@@ -15,18 +15,15 @@ public class GameStateManager : MonoBehaviour
     public void UpdateMoney(int amount)
     {
         gameState.currentMoney += amount;
-        Debug.Log("Aktuelles Geld: " + gameState.currentMoney);
     }
 
     public void UpdateQuote(int newQuote)
     {
         gameState.nextQuote = newQuote;
-        Debug.Log("Naechste Quote: " + gameState.nextQuote);
     }
 
     public void AddStrike()
     {
         gameState.strikes++;
-        Debug.Log("Erhaltene Strikes: " + gameState.strikes);
     }
 }

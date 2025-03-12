@@ -54,7 +54,6 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
 
         foreach (RaycastResult result in results)
         {
-            print(result.gameObject.name);
             if (result.gameObject.CompareTag("Cell"))
             {
                 Vector2 cellPos = result.gameObject.GetComponent<InventoryCell>().CellPos;
