@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b176afa857da18942b4fbdbd9872e367, type: 3}
   m_Name: BergpassEvent
   m_EditorClassIdentifier: 
-  eventName: Bergpass
+  eventName: Mountain Pass
+  eventDescription: You successfully traversed the mountains!
   chance: 3
-  effect: Erdrutsch
-  effectChance: 10
+  effect: {fileID: 11400000, guid: 7e0ddcde530b9475fbed2ba1204391dc, type: 2}
+  effectChance: 0.3
   itemAmount: 5
   possibleItems:
   - {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}

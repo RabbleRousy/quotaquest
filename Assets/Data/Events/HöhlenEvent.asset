@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b176afa857da18942b4fbdbd9872e367, type: 3}
-  m_Name: "Ho\u0308hlenEvent"
+  m_Name: "H\xF6hlenEvent"
   m_EditorClassIdentifier: 
-  eventName: "H\xF6hle"
+  eventName: Cave
+  eventDescription: You manouvered through the dim cave, picking up plentfiful loot.
   chance: 3
-  effect: Schleim
-  effectChance: 30
+  effect: {fileID: 0}
+  effectChance: 1
   itemAmount: 10
   possibleItems:
   - {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,12 @@ public class EventManager : MonoBehaviour
     public TMPro.TMP_Text optionButton2Text;
 
     [SerializeField] private GameObject inventoryWindow, dropArea;
+    private GameObject panel;
+
+    private void Awake()
+    {
+        panel = transform.GetChild(0).gameObject;
+    }
 
     void OnEnable()
     {
@@ -43,10 +50,10 @@ public class EventManager : MonoBehaviour
             optionBButton.GetComponent<Image>().sprite = event2.eventImage;
 
             optionAButton.onClick.RemoveAllListeners();
-            optionAButton.onClick.AddListener(() => ExecuteEvent(event1));
+            optionAButton.onClick.AddListener(() => StartCoroutine(ExecuteEvent(event1)));
 
             optionBButton.onClick.RemoveAllListeners();
-            optionBButton.onClick.AddListener(() => ExecuteEvent(event2));
+            optionBButton.onClick.AddListener(() => StartCoroutine(ExecuteEvent(event2)));
         }
         else
         {
@@ -54,18 +61,40 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    private void ExecuteEvent(EventData e)
+    private IEnumerator ExecuteEvent(EventData e)
     {
+        // Hide panel first
+        panel.SetActive(false);
+        
         inventoryWindow.SetActive(true);
         
         dropArea.SetActive(true);
+
+        bool effectTriggered = false;
+        if (e.effect != null)
+        {
+            if (Random.value < e.effectChance)
+            {
+                yield return new WaitForSeconds(1.0f);
+                e.effect.Activate();
+                effectTriggered = true;
+            }
+        }
+        
+        yield return new WaitForSeconds(1.0f);
         FindFirstObjectByType<DropAreaManager>().SpawnItems(e);
         
         MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
         msgWindow.SetHeader(e.eventName + " Event!");
-        msgWindow.SetDescription(e.eventName + " event description");
+        string description = e.eventDescription;
+
+        if (effectTriggered)
+            description += e.effect.description;
+        msgWindow.SetDescription(description);
         
-        this.gameObject.SetActive(false);
+        // Hide self, enable panel for next time showing
+        panel.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

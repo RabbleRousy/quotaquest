@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(menuName = "Inventory/Layout", fileName = "New Inventory Layout")]
 public class InventoryLayout : ScriptableObject
@@ -9,10 +10,17 @@ public class InventoryLayout : ScriptableObject
     [SerializeField]
     public string storage = new string('0', SIZE * SIZE);
 
-    public void GetMaxDimensions(out int width, out int height)
+    public InventoryLayout(InventoryLayout originalLayout)
     {
-        int xMin = int.MaxValue, xMax = int.MinValue;
-        int yMin = int.MaxValue, yMax = int.MinValue;
+        storage = originalLayout.storage;
+    }
+
+    public void GetMaxDimensions(out int width, out int height, out int xMin, out int yMin)
+    {
+        xMin = int.MaxValue;
+        int xMax = int.MinValue;
+        yMin = int.MaxValue;
+        int yMax = int.MinValue;
 
         for (int x = 0; x < SIZE; x++)
         {
@@ -29,6 +37,8 @@ public class InventoryLayout : ScriptableObject
         width = xMax - xMin + 1;
         height = yMax - yMin + 1;
     }
+
+    public void GetMaxDimensions(out int width, out int height) => GetMaxDimensions(out width, out height, out _, out _);
     
     public string GetCell(int x, int y)
     {
@@ -45,7 +55,7 @@ public class InventoryLayout : ScriptableObject
         return x + y * SIZE;
     }
     
-    void ToggleCell(int x, int y)
+    public void ToggleCell(int x, int y)
     {
         int n = GetIndex( x, y);
         if (n >= 0)
@@ -66,6 +76,29 @@ public class InventoryLayout : ScriptableObject
 #if UNITY_EDITOR
             EditorUtility.SetDirty( this);
 #endif
+        }
+    }
+    
+    public Vector2 GetRandomCell()
+    {
+        int minX, minY, width, height;
+        GetMaxDimensions(out width, out height, out minX, out minY);
+        int x, y;
+        do
+        {
+            x = Random.Range(minX, minX + width);
+            y = Random.Range(minY, minY + height);
+        } while (GetCell(x, y) == "0");
+        return new Vector2(x, y);
+    }
+
+    public void DisableRandomCells(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            // Get a random active cell and toggle it off
+            Vector2 cell = GetRandomCell();
+            ToggleCell((int)cell.x, (int)cell.y);
         }
     }
     

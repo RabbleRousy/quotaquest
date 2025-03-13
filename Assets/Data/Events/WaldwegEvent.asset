@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b176afa857da18942b4fbdbd9872e367, type: 3}
   m_Name: WaldwegEvent
   m_EditorClassIdentifier: 
-  eventName: Waldweg
+  eventName: Forest Track
+  eventDescription: You found some items in the bushes.
   chance: 3
-  effect: Elster
-  effectChance: 20
+  effect: {fileID: 0}
+  effectChance: 1
   itemAmount: 3
   possibleItems:
   - {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}

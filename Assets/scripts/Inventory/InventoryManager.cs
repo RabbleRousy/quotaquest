@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private InventoryLayout layout;
+    public InventoryLayout layout;
     private int width, height;
     public int Width => width; public int Height => height;
     [SerializeField] private string storage;
@@ -105,6 +105,19 @@ public class InventoryManager : MonoBehaviour
                 InventoryCell cell = Instantiate(cellPrefab, transform);
                 cell.GetComponent<Image>().color = layout.GetCell(x, y) != "0" ? Color.gray : Color.black;
                 cell.CellPos = new Vector2(x, y);
+            }
+        }
+    }
+
+    public void UpdateCellsUI()
+    {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                int index = GetIndex(x, y);
+                Image cellSprite = transform.GetChild(index).GetComponent<Image>();
+                cellSprite.color = layout.GetCell(x, y) != "0" ? Color.gray : Color.black;
             }
         }
     }
