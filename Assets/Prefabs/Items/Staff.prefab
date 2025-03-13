@@ -922,8 +922,16 @@ PrefabInstance:
       value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 11400000, guid: 46cbad0830bff493ab5df5aec1d5f112, type: 2}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: itemName
       value: Enchantor's Staff
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: effectChance
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3896617850202891814, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite

@@ -29,8 +29,16 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 11400000, guid: bb539ab3af4004caf9938f2ee39b50c7, type: 2}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: itemName
       value: Scroll
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: effectChance
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3896617850202891814, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite

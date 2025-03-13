@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05fd93bb1465f4fa29ad696f932fee98, type: 3}
-  m_Name: BuffValueEffect
+  m_Name: HalfValueEffect
   m_EditorClassIdentifier: 
+  description: Halve the value of items on 5 random tiles.
   numTiles: 5
-  scale: 2
-  cellHighlight: {fileID: 5915030775112884557, guid: 028b817f2c5892449b5fef6b6c37c046, type: 3}
+  scale: 0.5
+  cellHighlight: {fileID: 2579196272766412971, guid: f013d44ee17494fa6a989bc1dbcf17dd, type: 3}

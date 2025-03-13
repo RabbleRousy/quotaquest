@@ -1,13 +1,16 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Item : MonoBehaviour
 {
     public string itemName;
     public int value;
     public IItemEffect effect;
-    public bool HasEffect => effect != null;
+    [Range(0f,1f)] public float effectChance;
+    private bool hasEffect;
+    public bool HasEffect => effect != null && hasEffect;
 
     [SerializeField] private ItemRotation[] rotations;
     private int currentRotation;
@@ -20,9 +23,19 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
+        RollEffect();
         currentRotation = 0;
         UpdateRotations();
         SetScale();
+    }
+
+    // Determine whether we get an effect
+    void RollEffect()
+    {
+        hasEffect = Random.value < effectChance;
+        if (!HasEffect) return;
+        
+        // TODO: Modify visually
     }
     
     void SetScale()
