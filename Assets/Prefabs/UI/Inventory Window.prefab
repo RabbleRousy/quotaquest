@@ -117,9 +117,7 @@ MonoBehaviour:
   storage: 
   testItem: {fileID: 0}
   cellPrefab: {fileID: -7043987052308130261, guid: f013d44ee17494fa6a989bc1dbcf17dd, type: 3}
-  inventoryPanel: {fileID: 0}
-  dropAreaPanel: {fileID: 0}
-  itemSpawner: {fileID: 0}
+  items: []
 --- !u!1 &6231337240861378528
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8668127638587951012
 RectTransform:
   m_ObjectHideFlags: 0

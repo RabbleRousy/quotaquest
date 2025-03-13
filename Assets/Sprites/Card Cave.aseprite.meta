@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed9a9765d6a66eb4a986f7677af47db7
+guid: 129814d7fb15aad45b2675f7df4e2757
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,9 +123,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Backpack Inventory
+  - name: Card Cave
     originalName: 
-    pivot: {x: 0.5, y: -0.026315792}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 208
-      height: 152
-    spriteID: 98e8baa40167bf14693eeede595270ad
+      width: 64
+      height: 92
+    spriteID: ba8dffc28ccdd1443b6ca50f820859d5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,21 +147,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1153853500
-    name: Backpack Inventory
+    guid: -420990279
+    name: Card Cave
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Backpack Inventory
+    - name: Card Cave
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 16
-        y: 4
-        width: 208
-        height: 152
-      spriteId: 98e8baa40167bf14693eeede595270ad
+        x: 0
+        y: 0
+        width: 64
+        height: 92
+      spriteId: ba8dffc28ccdd1443b6ca50f820859d5
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -180,5 +180,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 240, y: 160}
-  previousTextureSize: {x: 256, y: 256}
+  canvasSize: {x: 64, y: 92}
+  previousTextureSize: {x: 128, y: 128}

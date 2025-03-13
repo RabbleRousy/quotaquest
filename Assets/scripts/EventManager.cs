@@ -39,6 +39,9 @@ public class EventManager : MonoBehaviour
             optionButton1Text.text = event1.eventName;
             optionButton2Text.text = event2.eventName;
 
+            optionAButton.GetComponent<Image>().sprite = event1.eventImage;
+            optionBButton.GetComponent<Image>().sprite = event2.eventImage;
+
             optionAButton.onClick.RemoveAllListeners();
             optionAButton.onClick.AddListener(() => ExecuteEvent(event1));
 
