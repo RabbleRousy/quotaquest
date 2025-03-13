@@ -407,11 +407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4450496912797111545, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -87.649994
+      value: -21.351
       objectReference: {fileID: 0}
     - target: {fileID: 4450496912797111545, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -119.5224
+      value: -228.1256
       objectReference: {fileID: 0}
     - target: {fileID: 4450496912797111545, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -443,11 +443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4450496912797111545, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.9500122
+      value: -10.676025
       objectReference: {fileID: 0}
     - target: {fileID: 4450496912797111545, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000061035156
+      value: 7.2731934
       objectReference: {fileID: 0}
     - target: {fileID: 4450496912797111545, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -464,10 +464,6 @@ PrefabInstance:
     - target: {fileID: 9182974886480907443, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_Name
       value: Sell Window
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182974886480907443, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
