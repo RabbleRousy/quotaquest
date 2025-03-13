@@ -560,8 +560,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.3013, y: -25.346497}
-  m_SizeDelta: {x: -81.0369, y: -369.251}
+  m_AnchoredPosition: {x: 1.8395996, y: 81.74594}
+  m_SizeDelta: {x: -90.8846, y: -332.0565}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6281627748315611386
 CanvasRenderer:
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -664,15 +664,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6667229206976199028, guid: 367c75b0d776657429d7b8ebbfa4486c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -695,10 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quoteText: {fileID: 0}
   moneyText: {fileID: 0}
-<<<<<<< Updated upstream
   strikeText: {fileID: 0}
-=======
->>>>>>> Stashed changes
   gameState: {fileID: 11400000, guid: 10df4f72ac4998948bc5eacd46d7c76b, type: 2}
 --- !u!1 &9203747456628610804
 GameObject:
@@ -717,7 +714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4548372827751623387
 RectTransform:
   m_ObjectHideFlags: 0
