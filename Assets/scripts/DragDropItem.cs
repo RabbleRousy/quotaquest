@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDropItem : MonoBehaviour, IPointerClickHandler
+public class DragDropItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Canvas canvas;
     private RectTransform rectTransform;
@@ -25,6 +25,22 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
         canvas = GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         item = GetComponent<Item>();
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (IsDragging) return;
+        
+        MouseHoverWindow.Instance.Show();
+        MouseHoverWindow.Instance.SetName(item.itemName);
+        string description = "Value: " + item.value;
+        description += "\nEffect: " + (item.HasEffect ? item.effect.description : "-");
+        MouseHoverWindow.Instance.SetDescription(description);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        MouseHoverWindow.Instance.Hide();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -90,6 +106,8 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler
     {
         IsDragging = true;
         transform.SetAsLastSibling();
+        
+        MouseHoverWindow.Instance.Hide();
 
         if (InDropArea)
         {

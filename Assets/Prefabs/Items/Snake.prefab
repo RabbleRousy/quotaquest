@@ -996,6 +996,10 @@ PrefabInstance:
       propertyPath: value
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: itemName
+      value: Snake
+      objectReference: {fileID: 0}
     - target: {fileID: 3896617850202891814, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite
       value: 

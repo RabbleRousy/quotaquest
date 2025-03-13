@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 3653404604313965650}
   - component: {fileID: 8464263903044350849}
   m_Layer: 0
-  m_Name: ItemTest
+  m_Name: ItemBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd2e48acadf2490a8cc842a3c8e823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: <ItemBase>
   value: 100
+  effect: {fileID: 0}
   rotations: []
 --- !u!114 &8464263903044350849
 MonoBehaviour:
@@ -383,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upperLeft: {fileID: 3977619216432555779}
   InInventory: 0
+  InDropArea: 0
   inventorySlot: {x: -1, y: -1}
 --- !u!1 &6776093887252994072
 GameObject:

@@ -19,7 +19,7 @@ MonoBehaviour:
   effectChance: 0.3
   itemAmount: 5
   possibleItems:
-  - {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+  - {fileID: 6112403428167387715, guid: a790d9e296f34314d90db5b289ed5304, type: 3}
   - {fileID: 4037001013355123739, guid: ec9cb97a9713246cbaa003f4699ab209, type: 3}
-  - {fileID: 6995887252275706486, guid: a76242bd070c0471285012211118f286, type: 3}
+  - {fileID: 3137006904128814246, guid: 218ad27b56a24ec409ee902ab212e4a3, type: 3}
   eventImage: {fileID: -4503418468102486470, guid: 917dc49cd0d48d04cb55dd7e58cee4a2, type: 3}

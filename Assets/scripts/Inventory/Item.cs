@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public string itemName;
     public int value;
     public IItemEffect effect;
     public bool HasEffect => effect != null;
