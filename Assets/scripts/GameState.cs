@@ -17,4 +17,11 @@ public class GameState : ScriptableObject
     public void AddMoney(int money) => currentMoney += money;
     public void NextQuota() => nextQuota += quotaIncrease;
     public bool GameOver => strikes >= maxStrikes;
+
+    public void NewGame()
+    {
+        currentMoney = 0;
+        nextQuota = startQuota;
+        strikes = 0;
+    }
 }

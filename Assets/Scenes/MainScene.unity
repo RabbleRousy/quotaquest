@@ -461,6 +461,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sell Window
       objectReference: {fileID: 0}
+    - target: {fileID: 9182974886480907443, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -994,6 +998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropArea
       objectReference: {fileID: 0}
+    - target: {fileID: 7287718742103137383, guid: 3d1c16d52bb8a4e6facb37e1593a1871, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1144,7 +1152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866527789928091999, guid: bfd96bf9c400b42c3ad325d3f3ee5981, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -924.1184
+      value: -1056.6309
       objectReference: {fileID: 0}
     - target: {fileID: 5866527789928091999, guid: bfd96bf9c400b42c3ad325d3f3ee5981, type: 3}
       propertyPath: m_SizeDelta.y

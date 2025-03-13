@@ -1,11 +1,14 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
 public class MessageWindow : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI header, description;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameState gameState;
     public Button confirmButton, cancelButton;
     private TextMeshProUGUI confirmButtonText, cancelButtonText;
 
@@ -49,5 +52,27 @@ public class MessageWindow : MonoBehaviour
         SetConfirmButtonText("OK");
         SetCancelButtonText("Cancel");
         cancelButton.gameObject.SetActive(false);
+    }
+
+    public void ShowGameOverMessage()
+    {
+        gameObject.SetActive(true);
+        gameOverPanel.SetActive(true);
+        GetComponent<Image>().enabled = false;
+        confirmButton.onClick.AddListener(OnGameOverButtonOnce);
+        confirmButtonText.text = "New Game";
+    }
+
+    private void OnGameOverButtonOnce()
+    {
+        gameState.NewGame();
+        SellItem sellHandler = FindFirstObjectByType<SellItem>(FindObjectsInactive.Include);
+        sellHandler.Reset();
+        sellHandler.UpdateUI();
+        FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).optionAButton.gameObject.SetActive(true);
+        FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).optionBButton.gameObject.SetActive(true);
+        GetComponent<Image>().enabled = true;
+        gameOverPanel.SetActive(false);
+        confirmButton.onClick.RemoveListener(OnGameOverButtonOnce);
     }
 }

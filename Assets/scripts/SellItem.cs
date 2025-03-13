@@ -10,6 +10,11 @@ public class SellItem : MonoBehaviour
 
     private int currentQuote = 500; // Startquote
     private int currentQuoteProgress;
+    public void Reset()
+    { 
+        currentQuote = gameState.nextQuota;
+        currentQuoteProgress = 0;
+    }
 
     private bool quotaReached;
 
@@ -33,9 +38,10 @@ public class SellItem : MonoBehaviour
         gameState.currentMoney = 0; // Beispielwerte
         gameState.nextQuota = gameState.startQuota;
         gameState.strikes = 0;
+        Reset();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         UpdateQuoteText();
         UpdateMoneyText();
@@ -126,6 +132,9 @@ public class SellItem : MonoBehaviour
         FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
         FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
         FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToEventScreen);
+        currentQuote = gameState.nextQuota;
+        currentQuoteProgress = 0;
+        UpdateUI();
         gameObject.SetActive(false);
     }
 
@@ -137,13 +146,7 @@ public class SellItem : MonoBehaviour
         if (gameState.GameOver)
         {
             MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
-            msgWindow.SetHeader("Game Over!");
-            msgWindow.SetDescription("You failed to reach the quota of $" + gameState.nextQuota + " and collected your " + gameState.strikes + ". strike." +
-                                     "\nBetter luck next time!");
-            msgWindow.gameObject.SetActive(true);
-            // Disable continuing
-            msgWindow.SetConfirmButtonText("Quit");
-            msgWindow.confirmButton.onClick.AddListener(Application.Quit);
+            msgWindow.ShowGameOverMessage();
             FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).optionAButton.gameObject.SetActive(false);
             FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).optionBButton.gameObject.SetActive(false);
         }
