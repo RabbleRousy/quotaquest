@@ -5,7 +5,7 @@ public class SellItem : MonoBehaviour
 {
     public TMP_Text quoteText; // Ergaenzung fuer TMPro
     public TMP_Text moneyText; // Ergaenzung fuer die Anzeige des aktuellen Geldes
-    public GameStateManager gameStateManager;
+    public GameState gameState;
 
     private int currentQuote = 500; // Startquote
     private int currentQuoteProgress;
@@ -15,50 +15,58 @@ public class SellItem : MonoBehaviour
     private void OnEnable()
     {
         currentQuoteProgress = 0;
+        currentQuote = gameState.nextQuota;
         quotaReached = false;
+        UpdateUI();
     }
 
-    void Start()
+    void Awake()
     {
-        UpdateQuote();
+        // Initialisierung
+        gameState.currentMoney = 0; // Beispielwerte
+        gameState.nextQuota = gameState.startQuota;
+        gameState.strikes = 0;
+    }
+
+    void UpdateUI()
+    {
+        UpdateQuoteText();
         UpdateMoneyText();
     }
 
-    void UpdateQuote()
+    void UpdateQuoteText()
     {
-        gameStateManager.UpdateQuote(currentQuote);
-        quoteText.text = "Quota: " + currentQuoteProgress + "/" + gameStateManager.gameState.nextQuote + " $";
+        quoteText.text = "Quota: " + currentQuoteProgress + "/" + currentQuote + " $";
     }
 
     void UpdateMoneyText()
     {
-        moneyText.text = "Surplus: " + gameStateManager.gameState.currentMoney + " $";
+        moneyText.text = "Surplus: " + gameState.currentMoney + " $";
     }
 
     public void Sell(Item item)
     {
         int itemQuote = item.value;
 
-        if (currentQuoteProgress < gameStateManager.gameState.nextQuote)
+        if (currentQuoteProgress < currentQuote)
         {
             currentQuoteProgress += itemQuote;
 
             // Ueberpruefe, ob die Quote erfuellt ist
-            if (currentQuoteProgress >= gameStateManager.gameState.nextQuote)
+            if (currentQuoteProgress >= currentQuote)
             {
                 OnQuotaReached();
             }
             else
             {
-                quoteText.text = "Quota: " + currentQuoteProgress + "/" + gameStateManager.gameState.nextQuote + " $";
+                quoteText.text = "Quota: " + currentQuoteProgress + "/" + gameState.nextQuota + " $";
             }
         }
         else
         {
-            gameStateManager.UpdateMoney(itemQuote);
-            UpdateMoneyText();
+            gameState.AddMoney(itemQuote);
         }
-        
+        UpdateUI();
         Destroy(item.gameObject);
     }
 
@@ -66,18 +74,16 @@ public class SellItem : MonoBehaviour
     {
         quotaReached = true;
         
-        gameStateManager.UpdateMoney(currentQuoteProgress - gameStateManager.gameState.nextQuote); 
-        UpdateMoneyText();
+        gameState.AddMoney(currentQuoteProgress - gameState.nextQuota); 
+        currentQuoteProgress = gameState.nextQuota;
+        UpdateUI();
         
-        currentQuoteProgress = gameStateManager.gameState.nextQuote;
-        UpdateQuote();
-        
-        gameStateManager.NextQuota();
+        gameState.NextQuota();
 
         MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
         msgWindow.SetHeader("Quota reached!");
-        msgWindow.SetDescription("Congratulations! You reached your quota this time. Your next quota is $" + gameStateManager.gameState.nextQuote + 
+        msgWindow.SetDescription("Congratulations! You reached your quota this time. Your next quota is $" + gameState.nextQuota + 
                                  "\nContinue selling for surplus or keep items for the next turn.");
     }
 
@@ -102,7 +108,7 @@ public class SellItem : MonoBehaviour
     {
         // If quota not reached, strike
         if (!quotaReached)
-            gameStateManager.gameState.strikes++;
+            gameState.strikes++;
         
         FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
         FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).gameObject.SetActive(true);

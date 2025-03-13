@@ -885,7 +885,6 @@ GameObject:
   - component: {fileID: 3885012929452095030}
   - component: {fileID: 5770349329213598083}
   - component: {fileID: 723053892380762590}
-  - component: {fileID: 6559430898923835892}
   m_Layer: 5
   m_Name: Sell Window
   m_TagString: Untagged
@@ -970,23 +969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quoteText: {fileID: 3747744352959551305}
   moneyText: {fileID: 88232842362971082}
-  gameStateManager: {fileID: 6559430898923835892}
---- !u!114 &6559430898923835892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9182974886480907443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31c74be4b130964b8f2922fc08aea93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   gameState: {fileID: 11400000, guid: 10df4f72ac4998948bc5eacd46d7c76b, type: 2}
-  strikesText: {fileID: 0}
-  maxStrikes: 3
-  messageWindow: {fileID: 0}
 --- !u!1 &9203747456628610804
 GameObject:
   m_ObjectHideFlags: 0

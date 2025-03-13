@@ -434,14 +434,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6559430898923835892, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
-      propertyPath: strikesText
-      value: 
-      objectReference: {fileID: 1587242310}
-    - target: {fileID: 6559430898923835892, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
-      propertyPath: messageWindow
-      value: 
-      objectReference: {fileID: 7364748734804533117}
     - target: {fileID: 9182974886480907443, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
       propertyPath: m_Name
       value: Sell Window
