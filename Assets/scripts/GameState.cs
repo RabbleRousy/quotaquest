@@ -8,10 +8,13 @@ public class GameState : ScriptableObject
     public int nextQuota;
     public int quotaIncrease = 250;
     public int strikes;
+
+    public int maxStrikes = 3;
     //public TMPro.TMP_Text strikesText;
     // Optional: passive Upgrades
     // public List<Upgrade> passiveUpgrades;
     
     public void AddMoney(int money) => currentMoney += money;
     public void NextQuota() => nextQuota += quotaIncrease;
+    public bool GameOver => strikes >= maxStrikes;
 }
