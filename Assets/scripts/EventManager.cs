@@ -16,6 +16,8 @@ public class EventManager : MonoBehaviour
     [SerializeField] private GameObject inventoryWindow, dropArea;
     private GameObject panel;
 
+    private EventData optionA, optionB;
+
     private void Awake()
     {
         panel = transform.GetChild(0).gameObject;
@@ -35,36 +37,28 @@ public class EventManager : MonoBehaviour
         {
             randomEvent2 = pool[Random.Range(0, pool.Count)];
         }
-        DisplayOptions(events[randomEvent1], events[randomEvent2]);
+        optionA = events[randomEvent1];
+        optionB = events[randomEvent2];
+        DisplayOptions();
     }
 
-    private void DisplayOptions(EventData event1, EventData event2)
+    private void DisplayOptions()
     {
+        optionAButton.GetComponent<Image>().sprite = optionA.eventImage;
+        optionBButton.GetComponent<Image>().sprite = optionB.eventImage;
 
-        if (optionButton1Text != null && optionButton2Text != null)
-        {
-            optionButton1Text.text = event1.eventName;
-            optionButton2Text.text = event2.eventName;
+        optionAButton.onClick.RemoveAllListeners();
+        optionAButton.onClick.AddListener(() => StartCoroutine(ExecuteEvent(optionA)));
 
-            optionAButton.GetComponent<Image>().sprite = event1.eventImage;
-            optionBButton.GetComponent<Image>().sprite = event2.eventImage;
-
-            optionAButton.onClick.RemoveAllListeners();
-            optionAButton.onClick.AddListener(() => StartCoroutine(ExecuteEvent(event1)));
-
-            optionBButton.onClick.RemoveAllListeners();
-            optionBButton.onClick.AddListener(() => StartCoroutine(ExecuteEvent(event2)));
-        }
-        else
-        {
-            Debug.LogError("Text components are not assigned");
-        }
+        optionBButton.onClick.RemoveAllListeners();
+        optionBButton.onClick.AddListener(() => StartCoroutine(ExecuteEvent(optionB)));
     }
 
     private IEnumerator ExecuteEvent(EventData e)
     {
         // Hide panel first
         panel.SetActive(false);
+        MouseHoverWindow.Instance.Hide();
         
         inventoryWindow.SetActive(true);
         
@@ -87,7 +81,7 @@ public class EventManager : MonoBehaviour
         MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
         msgWindow.SetHeader(e.eventName + " Event!");
-        string description = e.eventDescription;
+        string description = e.eventMessage;
 
         if (effectTriggered)
             description += e.effect.description;
@@ -97,4 +91,20 @@ public class EventManager : MonoBehaviour
         panel.SetActive(true);
         gameObject.SetActive(false);
     }
+
+    public void OnPointerEnterButtonA()
+    {
+        MouseHoverWindow.Instance.Show();
+        MouseHoverWindow.Instance.SetName(optionA.eventName);
+        MouseHoverWindow.Instance.SetDescription(optionA.eventDescription);
+    }
+    
+    public void OnPointerEnterButtonB()
+    {
+        MouseHoverWindow.Instance.Show();
+        MouseHoverWindow.Instance.SetName(optionB.eventName);
+        MouseHoverWindow.Instance.SetDescription(optionB.eventDescription);
+    }
+
+    public void OnPointerExitButton() => MouseHoverWindow.Instance.Hide();
 }

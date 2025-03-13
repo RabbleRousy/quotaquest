@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BergpassEvent
   m_EditorClassIdentifier: 
   eventName: Mountain Pass
-  eventDescription: You successfully traversed the mountains!
+  eventDescription: Traverse the dangerous mountains...
+  eventMessage: You successfully traversed the mountains!
   chance: 3
   effect: {fileID: 11400000, guid: 7e0ddcde530b9475fbed2ba1204391dc, type: 2}
   effectChance: 0.3

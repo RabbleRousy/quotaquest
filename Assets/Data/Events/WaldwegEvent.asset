@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WaldwegEvent
   m_EditorClassIdentifier: 
   eventName: Forest Track
-  eventDescription: You found some items in the bushes.
+  eventDescription: The safest route you can pick....
+  eventMessage: You found some items in the bushes.
   chance: 3
   effect: {fileID: 0}
   effectChance: 1

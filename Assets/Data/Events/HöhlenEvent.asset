@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: "H\xF6hlenEvent"
   m_EditorClassIdentifier: 
   eventName: Cave
-  eventDescription: You manouvered through the dim cave, picking up plentfiful loot.
+  eventDescription: A dark cave, promising rich treasures...
+  eventMessage: You manouvered through the dim cave, picking up plentfiful loot.
   chance: 3
   effect: {fileID: 0}
   effectChance: 1
