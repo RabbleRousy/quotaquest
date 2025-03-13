@@ -104,7 +104,7 @@ public class SellItem : MonoBehaviour
         if (!quotaReached)
             gameStateManager.gameState.strikes++;
         
-        FindFirstObjectByType<InventoryManager>().transform.parent.gameObject.SetActive(false);
+        FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
         FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
         FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToEventScreen);
         gameObject.SetActive(false);
