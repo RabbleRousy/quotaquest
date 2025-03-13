@@ -13,7 +13,6 @@ public class InventoryManager : MonoBehaviour
     public int Width => width; public int Height => height;
     [SerializeField] private string storage;
     
-    [SerializeField] private Item testItem;
     [SerializeField] private InventoryCell cellPrefab;
     
     public Vector2 UICellSize => GetComponent<GridLayoutGroup>().cellSize;
@@ -103,7 +102,7 @@ public class InventoryManager : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 InventoryCell cell = Instantiate(cellPrefab, transform);
-                cell.GetComponent<Image>().color = layout.GetCell(x, y) != "0" ? Color.gray : Color.black;
+                cell.GetComponent<Image>().color = layout.GetCell(x, y) != "0" ? Color.white : new Color(0, 0, 0, 0);
                 cell.CellPos = new Vector2(x, y);
             }
         }
@@ -117,7 +116,7 @@ public class InventoryManager : MonoBehaviour
             {
                 int index = GetIndex(x, y);
                 Image cellSprite = transform.GetChild(index).GetComponent<Image>();
-                cellSprite.color = layout.GetCell(x, y) != "0" ? Color.gray : Color.black;
+                cellSprite.color = layout.GetCell(x, y) != "0" ? Color.white : new Color(0, 0, 0, 0);
             }
         }
     }

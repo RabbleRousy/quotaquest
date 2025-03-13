@@ -8,7 +8,6 @@ public class DestroyCellsEffect : IEventEffect
     
     public override void Activate()
     {
-        Debug.Log("Activating Destroy Cell Effect!!");
         InventoryManager inventory = FindFirstObjectByType<InventoryManager>();
         originalLayout = inventory.layout;
         InventoryLayout newLayout = CreateInstance<InventoryLayout>();
