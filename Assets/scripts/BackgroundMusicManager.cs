@@ -3,43 +3,30 @@ using System.Collections;
 
 public class BackgroundMusicManager : MonoBehaviour
 {
-    public AudioClip[] musicTracks; // Array für die Musikstücke
+    public AudioClip track1;
+    public AudioClip track2;
+    
     private AudioSource audioSource;
-    private int currentTrackIndex = 0;
-    public float initialPause = 10.0f; 
-
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        StartCoroutine(PlayNextTrackWithPause());
+        StartCoroutine(LoopTracks());
     }
 
-
-    void Update()
+    IEnumerator LoopTracks()
     {
-        
-        if (!audioSource.isPlaying)
+        while (true)
         {
-            PlayNextTrack();
+            // Play first track
+            audioSource.clip = track1;
+            audioSource.Play();
+            yield return new WaitForSeconds(track1.length);
+
+            // Play second track
+            audioSource.clip = track2;
+            audioSource.Play();
+            yield return new WaitForSeconds(track2.length);
         }
-    }
-
-    IEnumerator PlayNextTrackWithPause()
-    {
-        yield return new WaitForSeconds(initialPause); 
-        PlayNextTrack();
-    }
-
-    void PlayNextTrack()
-    {
-        if (musicTracks.Length == 0)
-            return;
-
-        audioSource.clip = musicTracks[currentTrackIndex];
-        audioSource.Play();
-
-        
-        currentTrackIndex = (currentTrackIndex + 1) % musicTracks.Length;
     }
 }

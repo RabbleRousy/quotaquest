@@ -76,6 +76,8 @@ public class UpgradeManager : MonoBehaviour
         msgWindow.SetHeader(upgrade.upgradeName + " " + new string('I', upgrade.currentLevel));
         msgWindow.SetDescription(upgrade.GetLastActivationDescription());
         msgWindow.confirmButton.onClick.AddListener(ToEventScreen);
+        
+        SoundEffectsManager.SFX.PlaySellSound();
     }
 
     public static float GetValueMultiplier()
@@ -92,6 +94,7 @@ public class UpgradeManager : MonoBehaviour
     
     public void ToEventScreen()
     {
+        SoundEffectsManager.SFX.PlayFlipSound();
         FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
         FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToEventScreen);
         gameObject.SetActive(false);

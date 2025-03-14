@@ -60,6 +60,8 @@ public class EventManager : MonoBehaviour
         panel.SetActive(false);
         MouseHoverWindow.Instance.Hide();
         
+        SoundEffectsManager.SFX.PlayFlipSound();
+        
         inventoryWindow.SetActive(true);
         
         dropArea.SetActive(true);

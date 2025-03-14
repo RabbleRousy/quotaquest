@@ -332,6 +332,7 @@ public class InventoryManager : MonoBehaviour
 
     public void OnConfirmSorting()
     {
+        SoundEffectsManager.SFX.PlayFlipSound();
         StartCoroutine(TriggerAllItemEffects());
     }
 

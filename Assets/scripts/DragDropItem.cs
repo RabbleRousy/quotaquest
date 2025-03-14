@@ -81,6 +81,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
                     InInventory = true;
                     IsDragging = false;
                     inventorySlot = cellPos;
+                    SoundEffectsManager.SFX.PlayDropSound();
                 }
                 else
                 {
@@ -93,17 +94,20 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
                 IsDragging = false;
                 InDropArea = true;
                 FindFirstObjectByType<DropAreaManager>().AddItem(item);
+                SoundEffectsManager.SFX.PlayDropSound();
             }
             else if (result.gameObject.CompareTag("SellArea"))
             {
                 IsDragging = false;
                 FindFirstObjectByType<SellItem>().Sell(item);
+                SoundEffectsManager.SFX.PlaySellSound();
             }
         }
     }
 
     void PickUp()
     {
+        SoundEffectsManager.SFX.PlayPickupSound();
         IsDragging = true;
         transform.SetAsLastSibling();
         

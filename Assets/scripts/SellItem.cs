@@ -125,6 +125,8 @@ public class SellItem : MonoBehaviour
 
     private void ToUpgradeScreen()
     {
+        SoundEffectsManager.SFX.PlayFlipSound();
+        
         // If quota not reached, strike
         if (!quotaReached)
             Strike();
