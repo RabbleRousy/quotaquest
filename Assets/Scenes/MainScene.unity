@@ -725,6 +725,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2639f5b863579e740bb6e5c7f605b33d, type: 3}
   - {fileID: 8300000, guid: 7e2e19560410e11469fec6504ffa815e, type: 3}
   - {fileID: 8300000, guid: 1af0b807cc1905841a557fb7ebc1768c, type: 3}
+  initialPause: 10
 --- !u!82 &1279963170
 AudioSource:
   m_ObjectHideFlags: 0
@@ -738,7 +739,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -1,16 +1,20 @@
 using UnityEngine;
+using System.Collections;
 
 public class BackgroundMusicManager : MonoBehaviour
 {
     public AudioClip[] musicTracks; // Array für die Musikstücke
     private AudioSource audioSource;
     private int currentTrackIndex = 0;
+    public float initialPause = 10.0f; 
+
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        PlayNextTrack();
+        StartCoroutine(PlayNextTrackWithPause());
     }
+
 
     void Update()
     {
@@ -19,6 +23,12 @@ public class BackgroundMusicManager : MonoBehaviour
         {
             PlayNextTrack();
         }
+    }
+
+    IEnumerator PlayNextTrackWithPause()
+    {
+        yield return new WaitForSeconds(initialPause); 
+        PlayNextTrack();
     }
 
     void PlayNextTrack()
