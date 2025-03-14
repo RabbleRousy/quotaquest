@@ -16,4 +16,5 @@ MonoBehaviour:
   maxLevel: 3
   upgradeName: Enchant Item
   upgradeDescription: Randomly enchants one of your items with a random effect!
-  price: 500
+  price: 0
+  startPrice: 500

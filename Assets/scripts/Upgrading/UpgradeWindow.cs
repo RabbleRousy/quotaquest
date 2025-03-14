@@ -16,7 +16,7 @@ public class UpgradeWindow : MonoBehaviour
     {
         foreach (IUpgradeData upgrade in upgrades)
         {
-            upgrade.currentLevel = 0;
+            upgrade.ResetUpgrade();
         }
     }
 
@@ -50,7 +50,7 @@ public class UpgradeWindow : MonoBehaviour
         upgrade.Activate();
         var msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
-        msgWindow.SetHeader(upgrade.upgradeName + new string('I', upgrade.currentLevel));
+        msgWindow.SetHeader(upgrade.upgradeName + " " + new string('I', upgrade.currentLevel));
         msgWindow.SetDescription(upgrade.GetLastActivationDescription());
         msgWindow.confirmButton.onClick.AddListener(ToEventScreen);
     }
@@ -65,14 +65,14 @@ public class UpgradeWindow : MonoBehaviour
     public void OnPointerEnterButtonA()
     {
         MouseHoverWindow.Instance.Show();
-        MouseHoverWindow.Instance.SetName(optionA.upgradeName);
+        MouseHoverWindow.Instance.SetName(optionA.upgradeName + " " + new string('I', optionA.currentLevel+1));
         MouseHoverWindow.Instance.SetDescription(optionA.upgradeDescription + "\nPrice: $" + optionA.price);
     }
     
     public void OnPointerEnterButtonB()
     {
         MouseHoverWindow.Instance.Show();
-        MouseHoverWindow.Instance.SetName(optionB.upgradeName);
+        MouseHoverWindow.Instance.SetName(optionB.upgradeName + " " + new string('I', optionB.currentLevel+1));
         MouseHoverWindow.Instance.SetDescription(optionB.upgradeDescription + "\nPrice: $" + optionB.price);
     }
 

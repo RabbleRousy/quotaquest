@@ -16,4 +16,6 @@ MonoBehaviour:
   maxLevel: 3
   upgradeName: Value Multiplier
   upgradeDescription: Permanently increases the value of everything you find.
-  price: 750
+  price: 0
+  startPrice: 800
+  priceIncrease: 1.5

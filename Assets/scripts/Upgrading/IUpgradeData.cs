@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class IUpgradeData : ScriptableObject
@@ -13,4 +14,10 @@ public abstract class IUpgradeData : ScriptableObject
     public abstract void Activate();
 
     public abstract string GetLastActivationDescription();
+
+    public void ResetUpgrade()
+    {
+        currentLevel = 0;
+        price = startPrice;
+    }
 }
