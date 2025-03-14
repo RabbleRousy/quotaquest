@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0e97214ddea440a81b95e4d085ea2e, type: 3}
   m_Name: InventoryUpgrade
   m_EditorClassIdentifier: 
-  currentLevel: 3
+  currentLevel: 0
   maxLevel: 3
   upgradeName: Backpack Size
   upgradeDescription: Increase the size of your backpack.

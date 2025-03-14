@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -57,12 +58,38 @@ public class InventoryManager : MonoBehaviour
     public void SetLayout(InventoryLayout newLayout)
     {
         layout = newLayout;
-        layout.GetMaxDimensions(out width, out height);
-        storage += new string('0', width * height - storage.Length);
+        CheckNewLayoutDimensions();
         #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
         #endif
         PopulateUI();
+    }
+
+    void CheckNewLayoutDimensions()
+    {
+        int oldWidth = width;
+        int oldHeight = height;
+        layout.GetMaxDimensions(out width, out height);
+
+        if (oldWidth == width && oldHeight == height) return;
+        
+        // This will be empty and called again later again, but we need correct UI cell pos below
+        PopulateUI();
+        
+        // Clear storage, then insert items again
+        storage = new string('0', width * height);
+        itemCount = 0;
+        nextID = 0;
+        Item[] itemsCopy = new Item[width * height];
+        items.CopyTo(itemsCopy, 0);
+        items = new Item[width * height];
+        foreach (var item in itemsCopy)
+        {
+            if (item == null) continue;
+            Vector2 itemCell = item.GetComponent<DragDropItem>().inventorySlot;
+            TryInsertItem(item.CurrentRotation, (int)itemCell.x, (int)itemCell.y);
+            item.SetScale(); // Update scale
+        }
     }
 
     void SetDimensions()
@@ -92,19 +119,27 @@ public class InventoryManager : MonoBehaviour
 
     private void OnEnable()
     {
+        foreach (var item in items) item?.gameObject.SetActive(true);
+        StartCoroutine(PositionItemsInNewFrame());
+    }
+
+    IEnumerator PositionItemsInNewFrame()
+    {
+        yield return new WaitForSeconds(0.01f);
         foreach (var item in items)
         {
-            item?.gameObject.SetActive(true);
+            if (item == null) continue;
+            Vector3 offset = item.transform.position - item.CurrentRotation.Corner.position;
+            Vector3 cellPos = GetWorldPos(item.GetComponent<DragDropItem>().inventorySlot);
+            item.transform.position = cellPos + offset;
         }
     }
 
     void PopulateUI()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (var cell in GetComponentsInChildren<InventoryCell>())
         {
-            Transform child = transform.GetChild(i);
-            child.SetParent(null);
-            Destroy(child.gameObject);
+            Destroy(cell.gameObject);
         }
         
         GridLayoutGroup grid = GetComponent<GridLayoutGroup>();
@@ -238,7 +273,7 @@ public class InventoryManager : MonoBehaviour
         #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
         #endif
-        AddItem(item.GetComponentInParent<Item>());
+        AddItem(item.item);
         return true;
     }
 

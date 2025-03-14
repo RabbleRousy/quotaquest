@@ -17,6 +17,8 @@ public class ItemRotation : MonoBehaviour
 	public bool HasCornerLeft;
 	public bool HasCornerTop;
 
+	public Item item;
+
 	private void Awake()
 	{
 		Corner = transform.Find("Corner");

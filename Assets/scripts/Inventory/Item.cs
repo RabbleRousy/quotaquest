@@ -19,6 +19,10 @@ public class Item : MonoBehaviour
     private void Awake()
     {
         rotations = GetComponentsInChildren<ItemRotation>();
+        foreach (var r in rotations)
+        {
+            r.item = this;
+        }
     }
 
     private void Start()
@@ -38,9 +42,9 @@ public class Item : MonoBehaviour
         // TODO: Modify visually
     }
     
-    void SetScale()
+    public void SetScale()
     {
-        Vector2 cellSize = FindFirstObjectByType<InventoryManager>().UICellSize;
+        Vector2 cellSize = FindFirstObjectByType<InventoryManager>(FindObjectsInactive.Include).UICellSize;
         int maxSize = Int32.MinValue;
         foreach (var rotation in rotations)
         {
