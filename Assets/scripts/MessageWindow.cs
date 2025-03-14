@@ -68,6 +68,7 @@ public class MessageWindow : MonoBehaviour
 
     private void OnGameOverButtonOnce()
     {
+        FindFirstObjectByType<LeaderBoard>(FindObjectsInactive.Include).SubmitScore(gameState.nextQuota);
         gameState.NewGame();
         SellItem sellHandler = FindFirstObjectByType<SellItem>(FindObjectsInactive.Include);
         sellHandler.Reset();
@@ -77,7 +78,7 @@ public class MessageWindow : MonoBehaviour
         eventManager.gameObject.SetActive(true);
         eventManager.optionAButton.gameObject.SetActive(true);
         eventManager.optionBButton.gameObject.SetActive(true);
-        FindFirstObjectByType<UpgradeManager>().ResetUpgrades();
+        FindFirstObjectByType<UpgradeManager>(FindObjectsInactive.Include).ResetUpgrades();
         GetComponent<Image>().enabled = true;
         gameOverPanel.SetActive(false);
         confirmButton.onClick.RemoveListener(OnGameOverButtonOnce);
