@@ -10,10 +10,10 @@ public class EnchantUpgrade : IUpgradeData
     public override void Activate()
     {
         IItemEffect randomEffect = possibleEffects[Random.Range(0, possibleEffects.Length)];
-        Item item = FindFirstObjectByType<InventoryManager>(FindObjectsInactive.Include).GetRandomItem();
+        Item item = FindFirstObjectByType<InventoryManager>(FindObjectsInactive.Include).GetRandomUnenchantedItem();
         if (item is not null)
         {
-            item.effect = randomEffect;
+            item.Enchant(randomEffect);
             lastItem = item.itemName;
             lastEffect = randomEffect.effectName;
         }
@@ -27,7 +27,7 @@ public class EnchantUpgrade : IUpgradeData
     public override string GetLastActivationDescription()
     {
         if (lastItem == "")
-            return "No item was enchanted because your inventory is empty.";
-        return lastItem + " was enchanted with " + lastEffect;
+            return "There is no item in your inventory that could be enchanted. What a waste of money.";
+        return pickupDescription + "\n" + lastItem + " was enchanted with \"" + lastEffect + "\".";
     }
 }

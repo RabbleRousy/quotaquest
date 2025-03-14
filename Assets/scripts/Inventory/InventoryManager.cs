@@ -42,15 +42,17 @@ public class InventoryManager : MonoBehaviour
         nextID = at;
     }
 
-    public Item GetRandomItem()
+    public Item GetRandomUnenchantedItem()
     {
-        Item i = null;
-        if (itemCount == 0) return null;
-        do
+        List<int> candidates = new List<int>();
+        for (int i = 0; i < items.Length; i++)
         {
-            i = items[Random.Range(0, items.Length)];
-        } while (i == null);
-        return i;
+            Item item = items[i];
+            if (item is null) continue;
+            if (!item.HasEffect) candidates.Add(i);
+        }
+        if (candidates.Count == 0) return null;
+        return items[candidates[Random.Range(0, candidates.Count)]];
     }
 
     void UpdateNextID()

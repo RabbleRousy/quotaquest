@@ -18,8 +18,12 @@ MonoBehaviour:
   upgradeName: Flower of Longing
   upgradeDescription: "A flower that bends the rules of your world. \nEffect: Enchants
     one item in your inventory."
-  pickupDescription: 'After picking: As you seperate the flower from the soil it
-    layed embedded in you can sense an item in your inventory becoming even dearer
-    to you.'
+  pickupDescription: As you seperate the flower from the soil it layed embedded in
+    you can sense an item in your inventory becoming even dearer to you.
   price: 0
   startPrice: 500
+  possibleEffects:
+  - {fileID: 11400000, guid: 46cbad0830bff493ab5df5aec1d5f112, type: 2}
+  - {fileID: 11400000, guid: 46cbad0830bff493ab5df5aec1d5f112, type: 2}
+  - {fileID: 11400000, guid: 46cbad0830bff493ab5df5aec1d5f112, type: 2}
+  - {fileID: 11400000, guid: bb539ab3af4004caf9938f2ee39b50c7, type: 2}

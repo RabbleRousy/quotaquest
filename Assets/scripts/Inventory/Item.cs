@@ -44,6 +44,12 @@ public class Item : MonoBehaviour
         
         // TODO: Modify visually
     }
+
+    public void Enchant(IItemEffect e)
+    {
+        effect = e;
+        hasEffect = true;
+    }
     
     public void SetScale()
     {
