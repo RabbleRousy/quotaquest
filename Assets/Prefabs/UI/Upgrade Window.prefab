@@ -386,7 +386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5366896488462155051
 RectTransform:
   m_ObjectHideFlags: 0
@@ -436,8 +436,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
-  m_sharedMaterial: {fileID: 3658216743501247012, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50555cda849644e418d557d9075b0795, type: 2}
+  m_sharedMaterial: {fileID: 7278475588526521574, guid: 50555cda849644e418d557d9075b0795, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -654,7 +654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &98539707180860125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -764,8 +764,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Buy Upgrade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
-  m_sharedMaterial: {fileID: 3658216743501247012, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50555cda849644e418d557d9075b0795, type: 2}
+  m_sharedMaterial: {fileID: 7278475588526521574, guid: 50555cda849644e418d557d9075b0795, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
