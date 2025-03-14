@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valueMultiplier: 0.4
   effectName: Blessed
-  description: Doubles the value of items on 4 random tiles.
-  numTiles: 4
+  description: Doubles the value of 2 other random items.
+  numItems: 2
   scale: 2
   cellHighlight: {fileID: 2579196272766412971, guid: f013d44ee17494fa6a989bc1dbcf17dd, type: 3}

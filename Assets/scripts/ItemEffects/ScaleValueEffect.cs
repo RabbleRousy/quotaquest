@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "ScaleValueEffect", menuName = "ItemEffects/ScaleValueEffect")]
 public class ScaleValueEffect : IItemEffect
 {
-    public int numTiles = 5;
+    [FormerlySerializedAs("numTiles")] public int numItems = 5;
     public float scale = 1f;
     
     public Image cellHighlight;
@@ -15,24 +16,15 @@ public class ScaleValueEffect : IItemEffect
     public override void Activate(Item attachedItem)
     {
         InventoryManager inventory = FindFirstObjectByType<InventoryManager>();
-        Transform canvas = FindFirstObjectByType<Canvas>().transform;
+        int candidateCount = inventory.GetModifiableCount() - 1; // minus self
         
-        for (int i = 0; i < numTiles; i++)
+        for (int i = 0; i < numItems && i < candidateCount; i++)
         {
-            // Random cell (not self)
             Item item;
-            Vector2 cell;
             do
             {
-                cell = inventory.GetRandomCell();
-                item = inventory.GetItemAtCell((int)cell.x, (int)cell.y);
+                item = inventory.GetRandomItem();
             } while (item == attachedItem);
-            
-            // Highlight cell
-            Vector3 cellPos = inventory.GetWorldPos(new Vector2(cell.x, cell.y));
-            //inventory.StartCoroutine(ShowHighlightCell(cellPos, canvas));
-            
-            if (item == null) continue; // No item there
 
             int oldValue = item.value;
             item.value = (int) (item.value * scale);

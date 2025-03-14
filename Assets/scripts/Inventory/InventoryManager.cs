@@ -42,6 +42,31 @@ public class InventoryManager : MonoBehaviour
         itemCount--;
         nextID = at;
     }
+    
+    public Item GetRandomItem()
+    {
+        List<int> candidates = new List<int>();
+        for (int i = 0; i < items.Length; i++)
+        {
+            Item item = items[i];
+            if (item is null) continue;
+            if (item.IsModifiable) candidates.Add(i);
+        }
+        if (candidates.Count == 0) return null;
+        return items[candidates[Random.Range(0, candidates.Count)]];
+    }
+
+    public int GetModifiableCount()
+    {
+        List<int> candidates = new List<int>();
+        for (int i = 0; i < items.Length; i++)
+        {
+            Item item = items[i];
+            if (item is null) continue;
+            if (item.IsModifiable) candidates.Add(i);
+        }
+        return candidates.Count;
+    }
 
     public Item GetRandomUnenchantedItem()
     {
@@ -50,7 +75,7 @@ public class InventoryManager : MonoBehaviour
         {
             Item item = items[i];
             if (item is null) continue;
-            if (!item.HasEffect) candidates.Add(i);
+            if (!item.HasEffect && item.IsModifiable) candidates.Add(i);
         }
         if (candidates.Count == 0) return null;
         return items[candidates[Random.Range(0, candidates.Count)]];

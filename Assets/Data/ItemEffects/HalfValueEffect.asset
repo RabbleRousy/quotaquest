@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valueMultiplier: 2
   effectName: Cursed
-  description: Halve the value of items on 5 random tiles.
-  numTiles: 5
+  description: Halves the value of 3 other random items.
+  numItems: 3
   scale: 0.5
   cellHighlight: {fileID: 2579196272766412971, guid: f013d44ee17494fa6a989bc1dbcf17dd, type: 3}

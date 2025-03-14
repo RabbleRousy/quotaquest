@@ -7,12 +7,13 @@ public class Item : MonoBehaviour
 {
     public string itemName;
     public int value;
+    public bool IsModifiable = true;
     public IItemEffect effect;
     [Range(0f,1f)] public float effectChance;
     private bool hasEffect;
     public bool HasEffect => effect != null && hasEffect;
 
-    [SerializeField] private ItemRotation[] rotations;
+    private ItemRotation[] rotations;
     private int currentRotation;
     public ItemRotation CurrentRotation => rotations[currentRotation];
 

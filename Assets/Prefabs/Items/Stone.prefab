@@ -83,7 +83,7 @@ PrefabInstance:
     - target: {fileID: 2138537603775982856, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6630575597497523851, guid: d6a4e4fa3e804584e80867cd9001e488, type: 3}
+      objectReference: {fileID: -746567068344421829, guid: 87db0530c93fa004ba3e0ceee382bca8, type: 3}
     - target: {fileID: 3031563900599783648, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: itemName
-      value: Slime
+      value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: IsModifiable
@@ -147,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 3896617850202891814, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6630575597497523851, guid: d6a4e4fa3e804584e80867cd9001e488, type: 3}
+      objectReference: {fileID: -746567068344421829, guid: 87db0530c93fa004ba3e0ceee382bca8, type: 3}
     - target: {fileID: 3977619216432555779, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.53000003
@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6086720441078443603, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Name
-      value: Slime
+      value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: 6215744448117259492, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Pivot.x
@@ -307,7 +307,7 @@ PrefabInstance:
     - target: {fileID: 6473875961641364604, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6630575597497523851, guid: d6a4e4fa3e804584e80867cd9001e488, type: 3}
+      objectReference: {fileID: -746567068344421829, guid: 87db0530c93fa004ba3e0ceee382bca8, type: 3}
     - target: {fileID: 6776093887252994072, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_TagString
       value: CornerTopLeft
@@ -327,10 +327,14 @@ PrefabInstance:
     - target: {fileID: 7627985105607195714, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6630575597497523851, guid: d6a4e4fa3e804584e80867cd9001e488, type: 3}
+      objectReference: {fileID: -746567068344421829, guid: 87db0530c93fa004ba3e0ceee382bca8, type: 3}
     - target: {fileID: 7778770430779146807, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_TagString
       value: CornerTopLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464263903044350849, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

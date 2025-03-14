@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca78bb77efd6a49e185b0134b88d64e8, type: 3}
-  m_Name: SpawnSlimes
+  m_Name: SpawnStones
   m_EditorClassIdentifier: 
-  description: "While you reach for the glorious loot before you, a slime prepares
-    for a devestating blow. Phew\u2026 you were able to fend it off. Some of the
-    valueables you found are a bit gooey though."
-  itemToSpawn: {fileID: 3809402040915106636, guid: a7761c161c11041079934b6f252860f0, type: 3}
-  amount: 10
+  description: As you venture over the bridge you can feel the floor board giving
+    in. When you come to your senses your eyes seek your damaged backpack next to
+    something shiny hidden in the dust.
+  itemToSpawn: {fileID: 3809402040915106636, guid: 7ab3d3c6df9b14d0881491ea930578dc, type: 3}
+  amount: 5

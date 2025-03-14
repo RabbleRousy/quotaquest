@@ -22,6 +22,9 @@ public class SpawnItemsEffect : IEventEffect
             Item item = Instantiate(itemToSpawn, canvas.transform);
             inventory.TryInsertItem(item.CurrentRotation, (int)cell.x, (int)cell.y);
             item.transform.position = inventory.GetWorldPos(cell);
+            DragDropItem dragDropItem = item.GetComponent<DragDropItem>();
+            dragDropItem.InInventory = true;
+            dragDropItem.inventorySlot = cell;
         }
     }
 }
