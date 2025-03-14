@@ -54,6 +54,17 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void SetLayout(InventoryLayout newLayout)
+    {
+        layout = newLayout;
+        layout.GetMaxDimensions(out width, out height);
+        storage += new string('0', width * height - storage.Length);
+        #if UNITY_EDITOR
+        EditorUtility.SetDirty(this);
+        #endif
+        PopulateUI();
+    }
+
     void SetDimensions()
     {
         layout.GetMaxDimensions(out width, out height);
@@ -89,6 +100,13 @@ public class InventoryManager : MonoBehaviour
 
     void PopulateUI()
     {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+            child.SetParent(null);
+            Destroy(child.gameObject);
+        }
+        
         GridLayoutGroup grid = GetComponent<GridLayoutGroup>();
         RectTransform rect = GetComponent<RectTransform>();
         float uiWidth = rect.rect.width - grid.padding.left - grid.padding.right;
