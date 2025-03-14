@@ -12,10 +12,7 @@ public class StickyEffect : IItemEffect
     {
         // Starts counter
         if (attachedItem.stickyCounter == 0)
-        {
             attachedItem.stickyCounter = turns;
-            return;
-        }
         
         attachedItem.stickyCounter--;
         if (attachedItem.stickyCounter <= 0)

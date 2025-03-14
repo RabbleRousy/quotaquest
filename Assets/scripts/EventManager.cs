@@ -83,7 +83,7 @@ public class EventManager : MonoBehaviour
         MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
         msgWindow.SetHeader(e.eventName + " Event!");
-        string description = effectTriggered ?  e.effect.description : e.eventMessage;
+        string description = effectTriggered ?  e.effect.GetDescription() : e.eventMessage;
         msgWindow.SetDescription(description);
         
         // Hide self, enable panel for next time showing
