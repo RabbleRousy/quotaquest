@@ -42,6 +42,17 @@ public class InventoryManager : MonoBehaviour
         nextID = at;
     }
 
+    public Item GetRandomItem()
+    {
+        Item i = null;
+        if (itemCount == 0) return null;
+        do
+        {
+            i = items[Random.Range(0, items.Length)];
+        } while (i == null);
+        return i;
+    }
+
     void UpdateNextID()
     {
         for (int i = 0; i < width * height; i++)
