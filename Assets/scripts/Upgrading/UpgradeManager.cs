@@ -15,8 +15,10 @@ public class UpgradeManager : MonoBehaviour
     private IUpgradeData optionA, optionB;
 
     [SerializeField] private List<IUpgradeData> unlockedUpgrades;
-    
+
     private static UpgradeManager instance;
+
+    private static UpgradeManager Instance => instance ??= FindFirstObjectByType<UpgradeManager>(FindObjectsInactive.Include);
 
     private void Awake()
     {
@@ -72,7 +74,7 @@ public class UpgradeManager : MonoBehaviour
     public static float GetValueMultiplier()
     {
         float multiplier = 1f;
-        foreach (var upgrade in instance.unlockedUpgrades)
+        foreach (var upgrade in Instance.unlockedUpgrades)
         {
             if (upgrade is not MultiplierUpgrade multiplierUpgrade) continue;
 
