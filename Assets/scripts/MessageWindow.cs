@@ -61,6 +61,9 @@ public class MessageWindow : MonoBehaviour
         GetComponent<Image>().enabled = false;
         confirmButton.onClick.AddListener(OnGameOverButtonOnce);
         confirmButtonText.text = "New Game";
+        cancelButton.gameObject.SetActive(true); // Exit-Button aktivieren
+        cancelButton.onClick.AddListener(ExitGame); // Exit-Button Listener hinzufügen
+        cancelButtonText.text = "Exit Game"; // Exit-Button Text setzen
     }
 
     private void OnGameOverButtonOnce()
@@ -74,5 +77,12 @@ public class MessageWindow : MonoBehaviour
         GetComponent<Image>().enabled = true;
         gameOverPanel.SetActive(false);
         confirmButton.onClick.RemoveListener(OnGameOverButtonOnce);
+        cancelButton.gameObject.SetActive(false); // Exit-Button deaktivieren
+        cancelButton.onClick.RemoveListener(ExitGame); // Exit-Button Listener entfernen
+    }
+
+    private void ExitGame()
+    {
+        Application.Quit(); // Spiel beenden
     }
 }

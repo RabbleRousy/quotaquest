@@ -200,8 +200,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: OK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
-  m_sharedMaterial: {fileID: 3658216743501247012, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50555cda849644e418d557d9075b0795, type: 2}
+  m_sharedMaterial: {fileID: 7278475588526521574, guid: 50555cda849644e418d557d9075b0795, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -469,8 +469,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Cancel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
-  m_sharedMaterial: {fileID: 3658216743501247012, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50555cda849644e418d557d9075b0795, type: 2}
+  m_sharedMaterial: {fileID: 7278475588526521574, guid: 50555cda849644e418d557d9075b0795, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -707,8 +707,8 @@ MonoBehaviour:
     At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
     no sea takimata sanctus est Lorem ipsum dolor sit amet. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
-  m_sharedMaterial: {fileID: 3658216743501247012, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50555cda849644e418d557d9075b0795, type: 2}
+  m_sharedMaterial: {fileID: 7278475588526521574, guid: 50555cda849644e418d557d9075b0795, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -918,8 +918,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Event Effect
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
-  m_sharedMaterial: {fileID: 3658216743501247012, guid: 1b4b742f988e9aa40b1fd31e10e01898, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 50555cda849644e418d557d9075b0795, type: 2}
+  m_sharedMaterial: {fileID: 7278475588526521574, guid: 50555cda849644e418d557d9075b0795, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -943,7 +943,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.25
+  m_fontSize: 50
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

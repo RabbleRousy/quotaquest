@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 322.16992, y: 59.161987}
+  m_AnchoredPosition: {x: 355, y: 57}
   m_SizeDelta: {x: 1010.3398, y: 923.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446252488
@@ -255,7 +255,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'From: Simon, Serkan, Phil and Shari'
+  m_text: 'From: Simon, Serkan, Phil and Shari
+
+
+    Programmer: Simon, Serkan
+
+    Artists:
+    Phil, Shari
+
+    Interfaces: Serkan,  Simon, Shari
+
+    Music and Sound: Amirali
+
+    Idee:
+    Simon, Phil
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -697,8 +712,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -578.5862, y: 68.66019}
-  m_SizeDelta: {x: 762.8214, y: 942.6725}
+  m_AnchoredPosition: {x: -564.5938, y: -0.0018005}
+  m_SizeDelta: {x: 790.8063, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122994556
 MonoBehaviour:
