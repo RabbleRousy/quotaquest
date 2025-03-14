@@ -32,7 +32,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         if (IsDragging) return;
         
         MouseHoverWindow.Instance.Show();
-        MouseHoverWindow.Instance.SetName(item.itemName);
+        MouseHoverWindow.Instance.SetName(item.itemName + (item.HasEffect ? " (" + item.effect.effectName + ")" : ""));
         string description = "Value: " + item.value;
         description += "\nEffect: " + (item.HasEffect ? item.effect.description : "-");
         MouseHoverWindow.Instance.SetDescription(description);

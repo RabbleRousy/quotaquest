@@ -19,12 +19,12 @@ MonoBehaviour:
   upgradeDescription: 'The shimmering ruby catches your gaze. A strange warmth is
     surrounding you.
 
-    Effect: Boosts the value of all newfound items by x%.'
-  pickupDescription: 'After picking: While attaching the pendant to your backpack,
-    some of your sorrows vanish. It must have belonged to a truly kindhearted person.'
-  price: 0
+    Effect: Boosts the value of all newfound items.'
+  pickupDescription: While attaching the pendant to your backpack, some of your sorrows
+    vanish. It must have belonged to a truly kindhearted person.
+  price: 800
   startPrice: 800
   startMultiplier: 1.5
   multiplierIncrease: 0.5
-  currentMultiplier: 0
+  currentMultiplier: 1.5
   priceIncrease: 1.5

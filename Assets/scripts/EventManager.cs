@@ -91,14 +91,14 @@ public class EventManager : MonoBehaviour
 
     public void OnPointerEnterButtonA()
     {
-        MouseHoverWindow.Instance.Show();
+        MouseHoverWindow.Instance.Show(true);
         MouseHoverWindow.Instance.SetName(optionA.eventName);
         MouseHoverWindow.Instance.SetDescription(optionA.eventDescription);
     }
     
     public void OnPointerEnterButtonB()
     {
-        MouseHoverWindow.Instance.Show();
+        MouseHoverWindow.Instance.Show(true);
         MouseHoverWindow.Instance.SetName(optionB.eventName);
         MouseHoverWindow.Instance.SetDescription(optionB.eventDescription);
     }

@@ -20,6 +20,6 @@ public class MultiplierUpgrade : IUpgradeData
     
     public override string GetLastActivationDescription()
     {
-        return pickupDescription + "\nAll newly looted item's values are increased by " + (int)((currentMultiplier - 1f) * 100) + "%!";
+        return pickupDescription + "\n \nAll newly looted item's values are increased by " + (int)((currentMultiplier - 1f) * 100) + "%!";
     }
 }

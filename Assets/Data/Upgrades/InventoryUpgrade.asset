@@ -16,13 +16,13 @@ MonoBehaviour:
   currentLevel: 0
   maxLevel: 3
   upgradeName: Ray of Hope
-  upgradeDescription: 'he answer to your desperation lies in the rays of hope.
+  upgradeDescription: 'The answer to your desperation lies in the rays of hope.
 
     Effect:
     Adds spaces to your inventory'
-  pickupDescription: 'After picking: As you gaze into the light, the weight on your
-    shoulders is lifted.'
-  price: 0
+  pickupDescription: As you gaze into the light, the weight on your shoulders is
+    lifted.
+  price: 1000
   startPrice: 1000
   priceIncrease: 1000
   layoutUpgrades:

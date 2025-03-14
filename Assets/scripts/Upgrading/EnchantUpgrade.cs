@@ -28,6 +28,6 @@ public class EnchantUpgrade : IUpgradeData
     {
         if (lastItem == "")
             return "There is no item in your inventory that could be enchanted. What a waste of money.";
-        return pickupDescription + "\n" + lastItem + " was enchanted with \"" + lastEffect + "\".";
+        return pickupDescription + "\n \n" + lastItem + " was enchanted with \"" + lastEffect + "\".";
     }
 }

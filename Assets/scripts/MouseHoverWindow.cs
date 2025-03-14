@@ -6,29 +6,33 @@ using UnityEngine.Serialization;
 public class MouseHoverWindow : MonoBehaviour
 {
     public static MouseHoverWindow Instance;
-    private GameObject panel;
+    private RectTransform panel;
     private bool isShowing;
     public bool IsShowing => isShowing;
     
     [SerializeField] private TextMeshProUGUI header;
     [SerializeField] private TextMeshProUGUI description;
 
+    private Vector2 defaultSize;
+
     private void Awake()
     {
         Instance = this;
-        panel = transform.GetChild(0).gameObject;
+        panel = transform.GetChild(0).GetComponent<RectTransform>();
+        defaultSize = panel.sizeDelta;
     }
 
-    public void Show()
+    public void Show(bool big = false)
     {
-        panel.SetActive(true);
+        panel.gameObject.SetActive(true);
         isShowing = true;
         transform.SetAsLastSibling(); // bring to front
+        panel.sizeDelta = big ? 1.5f * defaultSize : defaultSize;
     }
 
     public void Hide()
     {
-        panel.SetActive(false);
+        panel.gameObject.SetActive(false);
         isShowing = false;
     }
 
