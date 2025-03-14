@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 942558788}
   - component: {fileID: 942558787}
   m_Layer: 0
-  m_Name: BackgroundMusic
+  m_Name: MainMenuMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,6 +809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicTracks:
   - {fileID: 8300000, guid: e839c99d66d887c458176a58b36824e0, type: 3}
+  initialPause: 10
 --- !u!82 &942558788
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1485,7 +1486,7 @@ GameObject:
   - component: {fileID: 1761630201}
   - component: {fileID: 1761630200}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: EventSystem Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
