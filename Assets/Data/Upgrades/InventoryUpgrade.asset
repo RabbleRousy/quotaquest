@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0e97214ddea440a81b95e4d085ea2e, type: 3}
   m_Name: InventoryUpgrade
   m_EditorClassIdentifier: 
+  upgradeCard: {fileID: 4311865264638844627, guid: 2075b743c30bbe7469f89fd53235d137, type: 3}
   currentLevel: 0
   maxLevel: 3
-  upgradeName: Backpack Size
-  upgradeDescription: Increase the size of your backpack.
+  upgradeName: Ray of Hope
+  upgradeDescription: 'he answer to your desperation lies in the rays of hope.
+
+    Effect:
+    Adds spaces to your inventory'
+  pickupDescription: 'After picking: As you gaze into the light, the weight on your
+    shoulders is lifted.'
   price: 0
   startPrice: 1000
   priceIncrease: 1000

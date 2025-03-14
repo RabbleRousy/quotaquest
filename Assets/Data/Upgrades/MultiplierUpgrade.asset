@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07c954711ffb4655b58bff52a698d2d, type: 3}
   m_Name: MultiplierUpgrade
   m_EditorClassIdentifier: 
+  upgradeCard: {fileID: 3655473775695948404, guid: 7c399eef60351ab43ac185e0c61f8791, type: 3}
   currentLevel: 0
   maxLevel: 3
-  upgradeName: Value Multiplier
-  upgradeDescription: Permanently increases the value of everything you find.
-  pickupDescription: 
+  upgradeName: Memory Pendant
+  upgradeDescription: 'The shimmering ruby catches your gaze. A strange warmth is
+    surrounding you.
+
+    Effect: Boosts the value of all newfound items by x%.'
+  pickupDescription: 'After picking: While attaching the pendant to your backpack,
+    some of your sorrows vanish. It must have belonged to a truly kindhearted person.'
   price: 0
   startPrice: 800
   startMultiplier: 1.5
