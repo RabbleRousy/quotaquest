@@ -16,6 +16,6 @@ public class InventoryUpgrade : IUpgradeData
 
     public override string GetLastActivationDescription()
     {
-        return "Your backpack can now hold more items!";
+        return pickupDescription;
     }
 }

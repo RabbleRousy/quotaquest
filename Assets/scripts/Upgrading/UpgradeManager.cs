@@ -45,10 +45,12 @@ public class UpgradeManager : MonoBehaviour
             optionA = possibleUpgrades[Random.Range(0, possibleUpgrades.Length)];
             optionB = possibleUpgrades[Random.Range(0, possibleUpgrades.Length)];
         } while (!optionA.CanActivate() || !optionB.CanActivate() || optionA.Equals(optionB));
-        
+
+        upgradeButtonA.GetComponent<Image>().sprite = optionA.upgradeCard;
         upgradeButtonA.onClick.RemoveAllListeners();
         upgradeButtonA.onClick.AddListener(() => TryBuy(optionA));
         
+        upgradeButtonB.GetComponent<Image>().sprite = optionB.upgradeCard;
         upgradeButtonB.onClick.RemoveAllListeners();
         upgradeButtonB.onClick.AddListener(() => TryBuy(optionB));
     }
