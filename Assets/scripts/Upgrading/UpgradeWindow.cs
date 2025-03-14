@@ -7,6 +7,8 @@ public class UpgradeWindow : MonoBehaviour
 {
     [SerializeField] private IUpgradeData[] upgrades;
     [SerializeField] private Button upgradeButtonA, upgradeButtonB;
+    [SerializeField] private GameState gameState;
+    [SerializeField] private SellItem seller;
     
     private IUpgradeData optionA, optionB;
 
@@ -32,14 +34,19 @@ public class UpgradeWindow : MonoBehaviour
         } while (!optionA.CanActivate() || !optionB.CanActivate() || optionA.Equals(optionB));
         
         upgradeButtonA.onClick.RemoveAllListeners();
-        upgradeButtonA.onClick.AddListener(() => Activate(optionA));
+        upgradeButtonA.onClick.AddListener(() => TryBuy(optionA));
         
         upgradeButtonB.onClick.RemoveAllListeners();
-        upgradeButtonB.onClick.AddListener(() => Activate(optionB));
+        upgradeButtonB.onClick.AddListener(() => TryBuy(optionB));
     }
 
-    void Activate(IUpgradeData upgrade)
+    void TryBuy(IUpgradeData upgrade)
     {
+        if (gameState.currentMoney < upgrade.price) return;
+        
+        gameState.currentMoney -= upgrade.price;
+        seller.UpdateUI();
+        
         upgrade.Activate();
         var msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);

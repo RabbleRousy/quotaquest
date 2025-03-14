@@ -697,6 +697,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 376480c8cf36b41a68f38d54a3dc7312, type: 2}
   upgradeButtonA: {fileID: 4241104972025670074}
   upgradeButtonB: {fileID: 2649048672709952736}
+  gameState: {fileID: 11400000, guid: 10df4f72ac4998948bc5eacd46d7c76b, type: 2}
+  seller: {fileID: 0}
 --- !u!1 &5934927625076088641
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public abstract class IUpgradeData : ScriptableObject
     public int maxLevel = 3;
     public string upgradeName;
     [TextArea] public string upgradeDescription;
-    public int price;
+    public int price, startPrice;
 
     public abstract bool CanActivate();
 
