@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.0065994
       objectReference: {fileID: 0}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: value
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: itemName
+      value: Dagger
+      objectReference: {fileID: 0}
     - target: {fileID: 3896617850202891814, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_Sprite
       value: 

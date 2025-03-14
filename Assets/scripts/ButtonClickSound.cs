@@ -23,10 +23,12 @@ public class ButtonClickSound : MonoBehaviour
     }
 
     void PlaySound()
-    {
-        Debug.Log("Button clicked!");
+    {  
         audioSource.clip = sceneChangeClip;
         audioSource.Play();
+        Debug.Log("Button clicked!");
+        
+        
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
