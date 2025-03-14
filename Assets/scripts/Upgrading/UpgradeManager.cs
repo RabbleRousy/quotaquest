@@ -49,10 +49,12 @@ public class UpgradeManager : MonoBehaviour
         upgradeButtonA.GetComponent<Image>().sprite = optionA.upgradeCard;
         upgradeButtonA.onClick.RemoveAllListeners();
         upgradeButtonA.onClick.AddListener(() => TryBuy(optionA));
+        upgradeButtonA.gameObject.SetActive(true);
         
         upgradeButtonB.GetComponent<Image>().sprite = optionB.upgradeCard;
         upgradeButtonB.onClick.RemoveAllListeners();
         upgradeButtonB.onClick.AddListener(() => TryBuy(optionB));
+        upgradeButtonB.gameObject.SetActive(true);
     }
 
     void TryBuy(IUpgradeData upgrade)
@@ -65,7 +67,10 @@ public class UpgradeManager : MonoBehaviour
         upgrade.Activate();
         if (!unlockedUpgrades.Contains(upgrade))
             unlockedUpgrades.Add(upgrade);
-        
+
+        MouseHoverWindow.Instance.Hide();
+        upgradeButtonA.gameObject.SetActive(false);
+        upgradeButtonB.gameObject.SetActive(false);
         var msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
         msgWindow.SetHeader(upgrade.upgradeName + " " + new string('I', upgrade.currentLevel));
