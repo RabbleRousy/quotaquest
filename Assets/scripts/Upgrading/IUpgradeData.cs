@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class IUpgradeData : ScriptableObject
 {
+    public Sprite upgradeCard;
     public int currentLevel = 0;
     public int maxLevel = 3;
     public string upgradeName;
