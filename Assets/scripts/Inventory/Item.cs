@@ -31,6 +31,9 @@ public class Item : MonoBehaviour
         currentRotation = 0;
         UpdateRotations();
         SetScale();
+        
+        // Compute value
+        value = (int)(value * UpgradeManager.GetValueMultiplier());
     }
 
     // Determine whether we get an effect

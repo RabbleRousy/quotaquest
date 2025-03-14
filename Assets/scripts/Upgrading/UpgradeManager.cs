@@ -1,20 +1,31 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class UpgradeWindow : MonoBehaviour
+public class UpgradeManager : MonoBehaviour
 {
-    [SerializeField] private IUpgradeData[] upgrades;
+    [FormerlySerializedAs("upgrades")] [SerializeField] private IUpgradeData[] possibleUpgrades;
     [SerializeField] private Button upgradeButtonA, upgradeButtonB;
     [SerializeField] private GameState gameState;
     [SerializeField] private SellItem seller;
     
     private IUpgradeData optionA, optionB;
 
+    [SerializeField] private List<IUpgradeData> unlockedUpgrades;
+    
+    private static UpgradeManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
-        foreach (IUpgradeData upgrade in upgrades)
+        foreach (IUpgradeData upgrade in possibleUpgrades)
         {
             upgrade.ResetUpgrade();
         }
@@ -29,8 +40,8 @@ public class UpgradeWindow : MonoBehaviour
     {
         do
         {
-            optionA = upgrades[Random.Range(0, upgrades.Length)];
-            optionB = upgrades[Random.Range(0, upgrades.Length)];
+            optionA = possibleUpgrades[Random.Range(0, possibleUpgrades.Length)];
+            optionB = possibleUpgrades[Random.Range(0, possibleUpgrades.Length)];
         } while (!optionA.CanActivate() || !optionB.CanActivate() || optionA.Equals(optionB));
         
         upgradeButtonA.onClick.RemoveAllListeners();
@@ -48,11 +59,26 @@ public class UpgradeWindow : MonoBehaviour
         seller.UpdateUI();
         
         upgrade.Activate();
+        if (!unlockedUpgrades.Contains(upgrade))
+            unlockedUpgrades.Add(upgrade);
+        
         var msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
         msgWindow.gameObject.SetActive(true);
         msgWindow.SetHeader(upgrade.upgradeName + " " + new string('I', upgrade.currentLevel));
         msgWindow.SetDescription(upgrade.GetLastActivationDescription());
         msgWindow.confirmButton.onClick.AddListener(ToEventScreen);
+    }
+
+    public static float GetValueMultiplier()
+    {
+        float multiplier = 1f;
+        foreach (var upgrade in instance.unlockedUpgrades)
+        {
+            if (upgrade is not MultiplierUpgrade multiplierUpgrade) continue;
+
+            multiplier *= multiplierUpgrade.Multiplier;
+        }
+        return multiplier;
     }
     
     public void ToEventScreen()

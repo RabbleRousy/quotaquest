@@ -137,7 +137,7 @@ public class SellItem : MonoBehaviour
         if (gameState.GameOver) return;
         
         FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
-        FindFirstObjectByType<UpgradeWindow>(FindObjectsInactive.Include).gameObject.SetActive(true);
+        FindFirstObjectByType<UpgradeManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
         FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToUpgradeScreen);
     }
 
