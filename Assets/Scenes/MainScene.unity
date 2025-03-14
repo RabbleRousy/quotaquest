@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Event Window
       objectReference: {fileID: 0}
+    - target: {fileID: 1527444160108554010, guid: ec1d19696a91841e494aee1ecf87cd55, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2055569382004677251, guid: ec1d19696a91841e494aee1ecf87cd55, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -475,6 +479,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4450496912797111545, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
   m_PrefabInstance: {fileID: 683822420}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &803214066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 723053892380762590, guid: bd9e23c5cfbaa449baceaade3801a14b, type: 3}
+  m_PrefabInstance: {fileID: 683822420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1f13f42984b714081a30a516295d1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &846652449 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8575229625219004627, guid: f9fe6c14c204444a68e5241b52c203e7, type: 3}
@@ -1458,14 +1473,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5468718892274098199, guid: bc6db6f4b528747869c180985c150295, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7364748734804533117}
     - target: {fileID: 5559549628673909993, guid: bc6db6f4b528747869c180985c150295, type: 3}
       propertyPath: m_Name
       value: Upgrade Window
       objectReference: {fileID: 0}
+    - target: {fileID: 5559549628673909993, guid: bc6db6f4b528747869c180985c150295, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006369161825940731, guid: bc6db6f4b528747869c180985c150295, type: 3}
+      propertyPath: seller
+      value: 
+      objectReference: {fileID: 803214066}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
