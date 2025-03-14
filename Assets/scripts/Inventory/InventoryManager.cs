@@ -42,6 +42,12 @@ public class InventoryManager : MonoBehaviour
         itemCount--;
         nextID = at;
     }
+
+    public void ResetInventory(InventoryLayout defaultLayout)
+    {
+        layout = defaultLayout;
+        Awake();
+    }
     
     public Item GetRandomItem()
     {

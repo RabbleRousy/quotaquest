@@ -62,7 +62,7 @@ public class MessageWindow : MonoBehaviour
         confirmButton.onClick.AddListener(OnGameOverButtonOnce);
         confirmButtonText.text = "New Game";
         cancelButton.gameObject.SetActive(true); // Exit-Button aktivieren
-        cancelButton.onClick.AddListener(ExitGame); // Exit-Button Listener hinzufügen
+        cancelButton.onClick.AddListener(ExitGame); // Exit-Button Listener hinzufï¿½gen
         cancelButtonText.text = "Exit Game"; // Exit-Button Text setzen
     }
 
@@ -72,8 +72,12 @@ public class MessageWindow : MonoBehaviour
         SellItem sellHandler = FindFirstObjectByType<SellItem>(FindObjectsInactive.Include);
         sellHandler.Reset();
         sellHandler.UpdateUI();
-        FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).optionAButton.gameObject.SetActive(true);
-        FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).optionBButton.gameObject.SetActive(true);
+        FindFirstObjectByType<InventoryManager>(FindObjectsInactive.Include).ResetInventory(gameState.startLayout);
+        var eventManager = FindFirstObjectByType<EventManager>(FindObjectsInactive.Include);
+        eventManager.gameObject.SetActive(true);
+        eventManager.optionAButton.gameObject.SetActive(true);
+        eventManager.optionBButton.gameObject.SetActive(true);
+        FindFirstObjectByType<UpgradeManager>().ResetUpgrades();
         GetComponent<Image>().enabled = true;
         gameOverPanel.SetActive(false);
         confirmButton.onClick.RemoveListener(OnGameOverButtonOnce);

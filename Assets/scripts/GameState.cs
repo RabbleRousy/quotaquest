@@ -10,6 +10,8 @@ public class GameState : ScriptableObject
     public int strikes;
 
     public int maxStrikes = 3;
+
+    public InventoryLayout startLayout;
     //public TMPro.TMP_Text strikesText;
     // Optional: passive Upgrades
     // public List<Upgrade> passiveUpgrades;

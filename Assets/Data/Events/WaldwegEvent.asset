@@ -18,7 +18,7 @@ MonoBehaviour:
   eventMessage: You still feel the impression this journey left on you. The loot
     you found sadly isn't as valueable as the memories you made.
   chance: 3
-  effect: {fileID: 0}
+  effect: {fileID: 11400000, guid: 83b145415ed614deaa77a8da76d6face, type: 2}
   effectChance: 1
   itemAmount: 3
   possibleItems:

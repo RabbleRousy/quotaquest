@@ -33,6 +33,15 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    public void ResetUpgrades()
+    {
+        foreach (IUpgradeData upgrade in possibleUpgrades)
+        {
+            upgrade.ResetUpgrade();
+        }
+        unlockedUpgrades.Clear();
+    }
+
     private void OnEnable()
     {
         ShowRandomUpgrade();

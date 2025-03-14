@@ -135,12 +135,12 @@ public class SellItem : MonoBehaviour
         currentQuoteProgress = 0;
         UpdateUI();
         gameObject.SetActive(false);
+        FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
+        FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToUpgradeScreen);
 
         if (gameState.GameOver) return;
         
-        FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
         FindFirstObjectByType<UpgradeManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
-        FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToUpgradeScreen);
     }
 
     private void Strike()

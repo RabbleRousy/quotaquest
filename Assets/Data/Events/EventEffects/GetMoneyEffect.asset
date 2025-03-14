@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef9ce50696a0441eac5360c8179ec46, type: 3}
   m_Name: GetMoneyEffect
   m_EditorClassIdentifier: 
-  description: 
-  gameState: {fileID: 0}
-  amount: 0
+  description: "As you take a look at the money you gathered a crow manages to snatch
+    a coin right out of your hand. Just as you caught up to it, you're able to find
+    it's hideout\u2026 you don't seem to be the first victim."
+  gameState: {fileID: 11400000, guid: 10df4f72ac4998948bc5eacd46d7c76b, type: 2}
+  amount: 300
