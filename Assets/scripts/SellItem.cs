@@ -110,7 +110,7 @@ public class SellItem : MonoBehaviour
     {
         if (quotaReached)
         {
-            ToEventScreen();
+            ToUpgradeScreen();
             return;
         }
         MessageWindow msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
@@ -118,24 +118,27 @@ public class SellItem : MonoBehaviour
         msgWindow.SetHeader("Finish turn?");
         msgWindow.SetDescription("You have not reached your quota for this turn. Continuing will yield a STRIKE.");
         msgWindow.SetConfirmButtonText("Confirm");
-        msgWindow.confirmButton.onClick.AddListener(ToEventScreen);
+        msgWindow.confirmButton.onClick.AddListener(ToUpgradeScreen);
         msgWindow.cancelButton.gameObject.SetActive(true);
-        msgWindow.cancelButton.onClick.AddListener(() => msgWindow.confirmButton.onClick.RemoveListener(ToEventScreen));
+        msgWindow.cancelButton.onClick.AddListener(() => msgWindow.confirmButton.onClick.RemoveListener(ToUpgradeScreen));
     }
 
-    private void ToEventScreen()
+    private void ToUpgradeScreen()
     {
         // If quota not reached, strike
         if (!quotaReached)
             Strike();
         
-        FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
-        FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
-        FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToEventScreen);
         currentQuote = gameState.nextQuota;
         currentQuoteProgress = 0;
         UpdateUI();
         gameObject.SetActive(false);
+
+        if (gameState.GameOver) return;
+        
+        FindFirstObjectByType<InventoryManager>().transform.parent.parent.gameObject.SetActive(false);
+        FindFirstObjectByType<UpgradeWindow>(FindObjectsInactive.Include).gameObject.SetActive(true);
+        FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToUpgradeScreen);
     }
 
     private void Strike()
