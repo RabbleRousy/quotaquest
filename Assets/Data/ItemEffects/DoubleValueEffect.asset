@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fd93bb1465f4fa29ad696f932fee98, type: 3}
   m_Name: DoubleValueEffect
   m_EditorClassIdentifier: 
+  valueMultiplier: 0.4
   effectName: Blessed
   description: Doubles the value of items on 4 random tiles.
   numTiles: 4

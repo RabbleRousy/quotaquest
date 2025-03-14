@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05fd93bb1465f4fa29ad696f932fee98, type: 3}
   m_Name: HalfValueEffect
   m_EditorClassIdentifier: 
+  valueMultiplier: 2
   effectName: Cursed
   description: Halve the value of items on 5 random tiles.
   numTiles: 5

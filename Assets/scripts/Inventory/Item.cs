@@ -43,12 +43,14 @@ public class Item : MonoBehaviour
         if (!HasEffect) return;
         
         // TODO: Modify visually
+        value = (int)(value * effect.valueMultiplier);
     }
 
     public void Enchant(IItemEffect e)
     {
         effect = e;
         hasEffect = true;
+        value = (int)(value * e.valueMultiplier);
     }
     
     public void SetScale()
