@@ -18,7 +18,7 @@ MonoBehaviour:
   eventMessage: With heavy steps you make your way out of the cave... without getting
     hurt. Were you truly alone in there?
   chance: 3
-  effect: {fileID: 0}
+  effect: {fileID: 11400000, guid: 04b36c471f19d4cb39d67eb45ccefc77, type: 2}
   effectChance: 1
   itemAmount: 10
   possibleItems:

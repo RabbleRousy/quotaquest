@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine.UI;
@@ -53,6 +54,11 @@ public class InventoryManager : MonoBehaviour
         }
         if (candidates.Count == 0) return null;
         return items[candidates[Random.Range(0, candidates.Count)]];
+    }
+
+    public int GetNumEmptyCells()
+    {
+        return storage.Count(f => f == '0');
     }
 
     void UpdateNextID()
