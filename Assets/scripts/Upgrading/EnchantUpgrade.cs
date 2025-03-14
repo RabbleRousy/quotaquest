@@ -9,4 +9,9 @@ public class EnchantUpgrade : IUpgradeData
     {
         currentLevel++;
     }
+    
+    public override string GetLastActivationDescription()
+    {
+        return "One of your items was enchanted!";
+    }
 }

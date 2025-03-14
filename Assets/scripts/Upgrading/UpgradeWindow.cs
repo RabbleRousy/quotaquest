@@ -32,10 +32,27 @@ public class UpgradeWindow : MonoBehaviour
         } while (!optionA.CanActivate() || !optionB.CanActivate() || optionA.Equals(optionB));
         
         upgradeButtonA.onClick.RemoveAllListeners();
-        upgradeButtonA.onClick.AddListener(() => optionA.Activate());
+        upgradeButtonA.onClick.AddListener(() => Activate(optionA));
         
         upgradeButtonB.onClick.RemoveAllListeners();
-        upgradeButtonB.onClick.AddListener(() => optionB.Activate());
+        upgradeButtonB.onClick.AddListener(() => Activate(optionB));
+    }
+
+    void Activate(IUpgradeData upgrade)
+    {
+        upgrade.Activate();
+        var msgWindow = FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include);
+        msgWindow.gameObject.SetActive(true);
+        msgWindow.SetHeader(upgrade.upgradeName + new string('I', upgrade.currentLevel));
+        msgWindow.SetDescription(upgrade.GetLastActivationDescription());
+        msgWindow.confirmButton.onClick.AddListener(ToEventScreen);
+    }
+    
+    public void ToEventScreen()
+    {
+        FindFirstObjectByType<EventManager>(FindObjectsInactive.Include).gameObject.SetActive(true);
+        FindFirstObjectByType<MessageWindow>(FindObjectsInactive.Include).confirmButton.onClick.RemoveListener(ToEventScreen);
+        gameObject.SetActive(false);
     }
     
     public void OnPointerEnterButtonA()

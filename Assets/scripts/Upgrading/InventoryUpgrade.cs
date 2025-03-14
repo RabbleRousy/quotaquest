@@ -11,4 +11,9 @@ public class InventoryUpgrade : IUpgradeData
     {
         FindFirstObjectByType<InventoryManager>(FindObjectsInactive.Include).SetLayout(layoutUpgrades[currentLevel++]);
     }
+
+    public override string GetLastActivationDescription()
+    {
+        return "Your backpack can now hold more items!";
+    }
 }

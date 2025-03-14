@@ -9,4 +9,9 @@ public class MultiplierUpgrade : IUpgradeData
     {
         currentLevel++;
     }
+    
+    public override string GetLastActivationDescription()
+    {
+        return "Your value multiplier has increased!";
+    }
 }

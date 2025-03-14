@@ -11,4 +11,6 @@ public abstract class IUpgradeData : ScriptableObject
     public abstract bool CanActivate();
 
     public abstract void Activate();
+
+    public abstract string GetLastActivationDescription();
 }
