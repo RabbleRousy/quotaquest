@@ -5,8 +5,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "NewEvent", menuName = "Events/EventData")]
 public class EventData : ScriptableObject
 {
-    public string eventName, eventDescription;
-    [FormerlySerializedAs("eventDescription")] public string eventMessage;
+    public string eventName;
+    [TextArea] public string eventDescription, eventMessage;
     public int chance; // Wahrscheinlichkeit, wie oft das Event vorkommt
     public IEventEffect effect;
     [Range(0f,1f)] public float effectChance; // Wahrscheinlichkeit fuer den Effekt

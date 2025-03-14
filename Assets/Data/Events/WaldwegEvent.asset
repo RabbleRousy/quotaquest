@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: WaldwegEvent
   m_EditorClassIdentifier: 
   eventName: Forest Track
-  eventDescription: The safest route you can pick....
-  eventMessage: You found some items in the bushes.
+  eventDescription: As you try to make out what lies at the end of the path ahead
+    you feel a hint of curiosity trying to get the best of you.
+  eventMessage: You still feel the impression this journey left on you. The loot
+    you found sadly isn't as valueable as the memories you made.
   chance: 3
   effect: {fileID: 0}
   effectChance: 1

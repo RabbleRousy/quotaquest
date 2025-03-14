@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00094d084ab0040cf8331d90b6594c4f, type: 3}
   m_Name: DestroyCellsEffect
   m_EditorClassIdentifier: 
-  description: But some of your inventory was destroyed by rockfall!
+  description: As you venture over the bridge you can feel the floor board giving
+    in. When you come to your senses your eyes seek your damaged backpack next to
+    something shiny hidden in the dust.
   amountToDestroy: 5

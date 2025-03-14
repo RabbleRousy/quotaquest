@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b176afa857da18942b4fbdbd9872e367, type: 3}
-  m_Name: BergpassEvent
+  m_Name: BridgeEvent
   m_EditorClassIdentifier: 
-  eventName: Mountain Pass
-  eventDescription: Traverse the dangerous mountains...
-  eventMessage: You successfully traversed the mountains!
-  chance: 3
+  eventName: Suspension Bridge
+  eventDescription: You can't help but wonder what the other side of the valley has
+    in store for you. The bridge seems to be in need of restauration.
+  eventMessage: You still can't fathom that the bridge didn't give in. With all you
+    heart you hope that the next person is just as lucky.
+  chance: 10
   effect: {fileID: 11400000, guid: 7e0ddcde530b9475fbed2ba1204391dc, type: 2}
-  effectChance: 0.3
+  effectChance: 0.5
   itemAmount: 5
   possibleItems:
   - {fileID: 6112403428167387715, guid: a790d9e296f34314d90db5b289ed5304, type: 3}

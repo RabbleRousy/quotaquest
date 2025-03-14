@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: "H\xF6hlenEvent"
   m_EditorClassIdentifier: 
   eventName: Cave
-  eventDescription: A dark cave, promising rich treasures...
-  eventMessage: You manouvered through the dim cave, picking up plentfiful loot.
+  eventDescription: As you seek the cave entrance a looming feeling besieges you.
+    Though it might be worth the risk.
+  eventMessage: With heavy steps you make your way out of the cave... without getting
+    hurt. Were you truly alone in there?
   chance: 3
   effect: {fileID: 0}
   effectChance: 1
