@@ -137,11 +137,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 11400000, guid: 09c820ed976934982bbfef01b88df4fd, type: 2}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: itemName
       value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: IsModifiable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: effectChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653404604313965650, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: stickyCounter
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3896617850202891814, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
@@ -331,6 +343,10 @@ PrefabInstance:
     - target: {fileID: 7778770430779146807, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
       propertyPath: m_TagString
       value: CornerTopLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464263903044350849, guid: 80ab7d73661b7465d907ac08c4bb2087, type: 3}
+      propertyPath: CanPickUp
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

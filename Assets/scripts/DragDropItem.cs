@@ -11,6 +11,7 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     [SerializeField] private RectTransform upperLeft;
     public bool InInventory, InDropArea;
     public Vector2 inventorySlot = new Vector2(-1, -1);
+    public bool CanPickUp = true;
 
     private static DragDropItem draggedItem = null;
 
@@ -107,6 +108,8 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     void PickUp()
     {
+        if (!CanPickUp) return;
+        
         SoundEffectsManager.SFX.PlayPickupSound();
         IsDragging = true;
         transform.SetAsLastSibling();

@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
     public string itemName;
     public int value;
     public bool IsModifiable = true;
+    public int stickyCounter;
     public IItemEffect effect;
     [Range(0f,1f)] public float effectChance;
     private bool hasEffect;

@@ -374,7 +374,7 @@ public class InventoryManager : MonoBehaviour
             if (item?.HasEffect ?? false)
             {
                 item.ActivateEffects();
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(0.0f);
             }
         }
         OpenSellWindow();
