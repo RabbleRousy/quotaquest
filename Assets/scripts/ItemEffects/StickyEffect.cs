@@ -11,7 +11,7 @@ public class StickyEffect : IItemEffect
     public override void Activate(Item attachedItem)
     {
         // Starts counter
-        if (attachedItem.stickyCounter == 0)
+        if (attachedItem.stickyCounter == -1)
             attachedItem.stickyCounter = turns;
         
         attachedItem.stickyCounter--;

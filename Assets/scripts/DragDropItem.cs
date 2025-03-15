@@ -53,7 +53,16 @@ public class DragDropItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
                 TryDrop();
             }
             else if (draggedItem == null)
-                PickUp();
+            {
+                if (item.effect is StickyEffect && item.stickyCounter == 0)
+                {
+                    if (InInventory)
+                        FindFirstObjectByType<InventoryManager>().RemoveItem(item.CurrentRotation, (int)inventorySlot.x, (int)inventorySlot.y);
+                    Destroy(gameObject);
+                    MouseHoverWindow.Instance.Hide();
+                } else
+                    PickUp();
+            }
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {

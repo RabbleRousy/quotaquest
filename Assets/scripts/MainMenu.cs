@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Button startButton;
-    public Button soundButton;
     public Button creditsButton;
     public Button exitButton;
 
@@ -15,7 +14,6 @@ public class MainMenu : MonoBehaviour
     {
         // Button-Events zuweisen
         startButton.onClick.AddListener(StartGame);
-        soundButton.onClick.AddListener(ToggleSound);
         creditsButton.onClick.AddListener(ShowCredits);
         exitButton.onClick.AddListener(ExitGame);
 

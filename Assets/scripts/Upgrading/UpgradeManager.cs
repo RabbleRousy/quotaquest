@@ -125,5 +125,5 @@ public class UpgradeManager : MonoBehaviour
 
     public void OnPointerExitButton() => MouseHoverWindow.Instance.Hide();
     
-    public string[] romanCharacters = new string[] {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
+    private string[] romanCharacters = new string[] {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
 }

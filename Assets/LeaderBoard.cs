@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Xml;
 using UnityEngine;
@@ -7,10 +8,12 @@ public class LeaderBoard : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI scoreText;
     public GameObject panel;
+    public TMPro.TMP_InputField inputField;
+    private string currentRanking;
     public void SubmitScore(int score)
     {
-        string name;
-        string url = string.Format("http://dreamlo.com/lb/Qg6zHLUBDUa4V9NCwxBjSwZa8SGsDj-0WWfjLr1pSomQ/add/Simon/200");
+        string name = inputField.text;
+        string url = string.Format("http://dreamlo.com/lb/Qg6zHLUBDUa4V9NCwxBjSwZa8SGsDj-0WWfjLr1pSomQ/add/{0}/{1}", name, score);
         StartCoroutine(GetRequest(url));
     }
     
@@ -59,7 +62,7 @@ public class LeaderBoard : MonoBehaviour
         XmlNodeList nodes = xmlDoc.SelectNodes("//entry");
 
         int rank = 0;
-        string leaderboardText = "";
+        currentRanking = "";
         foreach (XmlNode entryNode in nodes)
         {
             if (rank == 10) break;
@@ -72,11 +75,19 @@ public class LeaderBoard : MonoBehaviour
                 string text = entryNode["text"].InnerText;
                 string date = entryNode["date"].InnerText;
 
-                leaderboardText += "" + rank + ". " + name + ": " + score + "\n";
+                currentRanking += "" + rank + ". " + name + " failed at $" + score + " quota\n";
             }
         }
-        scoreText.text = leaderboardText;
+        scoreText.text = currentRanking;
         panel.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            scoreText.text = "Honorable mention: Flo $9862687 surplus\n" + currentRanking;
+        }
     }
 
     public void Print()
