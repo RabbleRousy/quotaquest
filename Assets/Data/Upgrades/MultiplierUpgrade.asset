@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MultiplierUpgrade
   m_EditorClassIdentifier: 
   upgradeCard: {fileID: 3655473775695948404, guid: 7c399eef60351ab43ac185e0c61f8791, type: 3}
-  currentLevel: 0
-  maxLevel: 3
+  currentLevel: 7
+  maxLevel: 10
   upgradeName: Memory Pendant
   upgradeDescription: 'The shimmering ruby catches your gaze. A strange warmth is
     surrounding you.
@@ -22,9 +22,9 @@ MonoBehaviour:
     Effect: Boosts the value of all newfound items.'
   pickupDescription: While attaching the pendant to your backpack, some of your sorrows
     vanish. It must have belonged to a truly kindhearted person.
-  price: 800
+  price: 13668
   startPrice: 800
   startMultiplier: 1.5
   multiplierIncrease: 0.5
-  currentMultiplier: 1.5
+  currentMultiplier: 4.5
   priceIncrease: 1.5

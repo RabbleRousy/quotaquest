@@ -17,9 +17,9 @@ MonoBehaviour:
     you feel a hint of curiosity trying to get the best of you.
   eventMessage: You still feel the impression this journey left on you. The loot
     you found sadly isn't as valueable as the memories you made.
-  chance: 3
+  chance: 2
   effect: {fileID: 11400000, guid: 83b145415ed614deaa77a8da76d6face, type: 2}
-  effectChance: 1
+  effectChance: 0.5
   itemAmount: 3
   possibleItems:
   - {fileID: 4037001013355123739, guid: ec9cb97a9713246cbaa003f4699ab209, type: 3}

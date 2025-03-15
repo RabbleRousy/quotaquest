@@ -112,16 +112,18 @@ public class UpgradeManager : MonoBehaviour
     public void OnPointerEnterButtonA()
     {
         MouseHoverWindow.Instance.Show(true);
-        MouseHoverWindow.Instance.SetName(optionA.upgradeName + " " + new string('I', optionA.currentLevel+1));
+        MouseHoverWindow.Instance.SetName(optionA.upgradeName + " " + romanCharacters[optionA.currentLevel]);
         MouseHoverWindow.Instance.SetDescription(optionA.upgradeDescription + "\nPrice: $" + optionA.price);
     }
     
     public void OnPointerEnterButtonB()
     {
         MouseHoverWindow.Instance.Show(true);
-        MouseHoverWindow.Instance.SetName(optionB.upgradeName + " " + new string('I', optionB.currentLevel+1));
+        MouseHoverWindow.Instance.SetName(optionB.upgradeName + " " + romanCharacters[optionB.currentLevel]);
         MouseHoverWindow.Instance.SetDescription(optionB.upgradeDescription + "\nPrice: $" + optionB.price);
     }
 
     public void OnPointerExitButton() => MouseHoverWindow.Instance.Hide();
+    
+    public string[] romanCharacters = new string[] {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
 }
